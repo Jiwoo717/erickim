@@ -1,0 +1,707 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Eric J. Kim — Data Analyst</title>
+    <meta
+      name="description"
+      content="Eric J. Kim — Data Analyst / Aspiring Data Scientist. Portfolio, projects, experience, and contact."
+    />
+
+    <!-- Fonts (swap if you want DM Mono later) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+
+  <body>
+    <!-- Top Nav -->
+    <header class="topbar" role="banner">
+      <div class="container topbar-inner">
+        <a class="brand" href="#top" aria-label="Home">
+          <span class="brand-name">Eric J. Kim</span>
+        </a>
+
+        <nav class="nav" aria-label="Primary">
+          <a class="nav-link" href="#skills">Skills</a>
+          <a class="nav-link" href="#experience">Experience</a>
+          <a class="nav-link" href="#projects">Projects</a>
+          <a class="nav-link" href="#contact">Contact</a>
+        </nav>
+
+        <button class="nav-toggle" aria-label="Open menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+
+      <div class="mobile-nav container" hidden>
+        <a class="nav-link" href="#skills">Skills</a>
+        <a class="nav-link" href="#experience">Experience</a>
+        <a class="nav-link" href="#projects">Projects</a>
+        <a class="nav-link" href="#contact">Contact</a>
+      </div>
+    </header>
+
+    <main id="top">
+      <!-- Hero -->
+      <section class="hero">
+        <div class="container hero-grid">
+          <div class="hero-left">
+            <span class="badge-hero">
+              <span class="badge-icon" aria-hidden="true">✦</span>
+              Available for Work
+            </span>
+
+            <h1 class="hero-title">
+              Hello, I’m<br />
+              <span class="hero-name">Eric Kim</span>
+            </h1>
+
+            <p class="hero-subtitle">
+              Data Analyst crafting clean insights and decision-ready
+              dashboards.
+              <strong
+                >Focused on SQL, experimentation, and metric
+                storytelling.</strong
+              >
+            </p>
+
+            <p class="hero-desc">
+              I help teams uncover drivers, explain variance, and build tracking
+              that people actually use.
+            </p>
+
+            <div class="hero-actions">
+              <a
+                class="btn btn-solid"
+                href="assets/Eric-Kim-Resume.pdf"
+                target="_blank"
+                rel="noreferrer"
+              >
+                Download Resume
+              </a>
+              <a class="btn btn-outline" href="#projects">View My Work</a>
+            </div>
+
+            <div class="hero-social">
+              <a
+                class="icon-btn"
+                href="https://www.linkedin.com/in/jiwoo717"
+                target="_blank"
+                rel="noreferrer"
+                aria-label="LinkedIn"
+              >
+                <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                  <path
+                    d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1 4.98 2.12 4.98 3.5ZM.5 23.5h4V7.98h-4V23.5ZM8.5 7.98h3.83v2.12h.05c.53-1 1.83-2.06 3.77-2.06 4.03 0 4.78 2.65 4.78 6.1v9.36h-4v-8.3c0-1.98-.04-4.52-2.75-4.52-2.76 0-3.18 2.16-3.18 4.39v8.43h-4V7.98Z"
+                  />
+                </svg>
+              </a>
+
+              <a
+                class="icon-btn"
+                href="https://github.com/Jiwoo717"
+                target="_blank"
+                rel="noreferrer"
+                aria-label="GitHub"
+              >
+                <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                  <path
+                    d="M12 .5C5.73.5.75 5.62.75 12c0 5.1 3.2 9.42 7.65 10.95.56.1.77-.25.77-.55v-2.1c-3.1.69-3.75-1.34-3.75-1.34-.5-1.33-1.23-1.68-1.23-1.68-1-.7.08-.69.08-.69 1.1.08 1.68 1.16 1.68 1.16.98 1.72 2.58 1.22 3.2.93.1-.73.38-1.22.69-1.5-2.47-.29-5.06-1.27-5.06-5.65 0-1.25.43-2.27 1.15-3.07-.12-.29-.5-1.48.1-3.07 0 0 .94-.31 3.08 1.17.9-.25 1.86-.38 2.82-.38.96 0 1.92.13 2.82.38 2.14-1.48 3.08-1.17 3.08-1.17.6 1.59.22 2.78.1 3.07.72.8 1.15 1.82 1.15 3.07 0 4.39-2.6 5.36-5.08 5.65.39.35.75 1.05.75 2.12v3.14c0 .3.2.65.78.55C20.05 21.42 23.25 17.1 23.25 12 23.25 5.62 18.27.5 12 .5Z"
+                  />
+                </svg>
+              </a>
+
+              <a
+                class="icon-btn"
+                href="mailto:kimeric717@gmail.com?subject=Portfolio%20Inquiry"
+                aria-label="Email"
+              >
+                <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                  <path
+                    d="M2.5 5.5h19A2.5 2.5 0 0 1 24 8v10a2.5 2.5 0 0 1-2.5 2.5h-19A2.5 2.5 0 0 1 0 18V8a2.5 2.5 0 0 1 2.5-2.5Zm.9 2.2 8.1 6.1c.3.2.7.2 1 0l8.1-6.1a.6.6 0 0 0-.4-1.1H3.8a.6.6 0 0 0-.4 1.1Z"
+                  />
+                </svg>
+              </a>
+            </div>
+
+            <div class="stats">
+              <div class="stat">
+                <div class="stat-value">25+</div>
+                <div class="stat-label">Stores tracked</div>
+              </div>
+              <div class="stat">
+                <div class="stat-value">3+</div>
+                <div class="stat-label">Years exp</div>
+              </div>
+              <div class="stat">
+                <div class="stat-value">100%</div>
+                <div class="stat-label">Data-driven</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="hero-right">
+            <div class="portrait">
+              <div class="portrait-frame">
+                <img src="assets/profile.jpg" alt="Portrait of Eric Kim" />
+              </div>
+
+              <span class="chip chip-right">
+                <span class="chip-dot"></span>
+                Available for Hire
+              </span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Projects -->
+      <section id="projects" class="section">
+        <div class="container">
+          <header class="section-head">
+            <h2 class="section-title">Projects</h2>
+            <p class="section-subtitle">
+              A few pieces that show my approach to clean, usable analytics.
+            </p>
+          </header>
+
+          <div class="projects-grid">
+            <article class="project">
+              <div class="project-shell">
+                <div class="project-media">
+                  <img
+                    src="assets/project-1.jpg"
+                    alt="Beverage Outlier Dashboard screenshot"
+                  />
+                </div>
+
+                <div class="project-body">
+                  <h3 class="project-title">Beverage Outlier Dashboard</h3>
+                  <p class="project-desc">
+                    Built a store-level outlier tracker using ROS normalization
+                    to identify meaningful change.
+                  </p>
+
+                  <div class="pill-row">
+                    <span class="pill">SQL</span>
+                    <span class="pill">Tableau</span>
+                    <span class="pill">Stats</span>
+                  </div>
+                </div>
+
+                <div class="project-popout">
+                  <div class="project-popout-media">
+                    <img
+                      src="assets/project-1.jpg"
+                      alt="Beverage Outlier Dashboard preview"
+                    />
+                  </div>
+
+                  <div class="project-popout-body">
+                    <h3 class="project-popout-title">
+                      Beverage Outlier Dashboard
+                    </h3>
+                    <p class="project-popout-text">
+                      Built to help operators identify unusual beverage movement
+                      across stores using normalized rate-of-sale logic instead
+                      of raw sales noise.
+                    </p>
+
+                    <div class="pill-row">
+                      <span class="pill">SQL</span>
+                      <span class="pill">Tableau</span>
+                      <span class="pill">Stats</span>
+                    </div>
+
+                    <div class="project-actions">
+                      <a
+                        class="btn btn-ghost"
+                        href="https://github.com/YOUR-GITHUB-REPO"
+                        target="_blank"
+                        rel="noreferrer"
+                      >
+                        Code
+                      </a>
+                      <a class="btn btn-solid" href="projects/project1.html">
+                        View Project
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <article class="project">
+              <div class="project-shell">
+                <div class="project-media">
+                  <img
+                    src="assets/project-1.jpg"
+                    alt="Beverage Outlier Dashboard screenshot"
+                  />
+                </div>
+
+                <div class="project-body">
+                  <h3 class="project-title">Beverage Outlier Dashboard</h3>
+                  <p class="project-desc">
+                    Built a store-level outlier tracker using ROS normalization
+                    to identify meaningful change.
+                  </p>
+
+                  <div class="pill-row">
+                    <span class="pill">SQL</span>
+                    <span class="pill">Tableau</span>
+                    <span class="pill">Stats</span>
+                  </div>
+                </div>
+
+                <div class="project-popout">
+                  <div class="project-popout-media">
+                    <img
+                      src="assets/project-1.jpg"
+                      alt="Beverage Outlier Dashboard preview"
+                    />
+                  </div>
+
+                  <div class="project-popout-body">
+                    <h3 class="project-popout-title">
+                      Beverage Outlier Dashboard
+                    </h3>
+                    <p class="project-popout-text">
+                      Built to help operators identify unusual beverage movement
+                      across stores using normalized rate-of-sale logic instead
+                      of raw sales noise.
+                    </p>
+
+                    <div class="pill-row">
+                      <span class="pill">SQL</span>
+                      <span class="pill">Tableau</span>
+                      <span class="pill">Stats</span>
+                    </div>
+
+                    <div class="project-actions">
+                      <a
+                        class="btn btn-ghost"
+                        href="https://github.com/YOUR-GITHUB-REPO"
+                        target="_blank"
+                        rel="noreferrer"
+                      >
+                        Code
+                      </a>
+                      <a
+                        class="btn btn-solid"
+                        href="projects/beverage-outlier-dashboard.html"
+                      >
+                        View Project
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <article class="project">
+              <div class="project-shell">
+                <div class="project-media">
+                  <img
+                    src="assets/project-1.jpg"
+                    alt="Beverage Outlier Dashboard screenshot"
+                  />
+                </div>
+
+                <div class="project-body">
+                  <h3 class="project-title">Beverage Outlier Dashboard</h3>
+                  <p class="project-desc">
+                    Built a store-level outlier tracker using ROS normalization
+                    to identify meaningful change.
+                  </p>
+
+                  <div class="pill-row">
+                    <span class="pill">SQL</span>
+                    <span class="pill">Tableau</span>
+                    <span class="pill">Stats</span>
+                  </div>
+                </div>
+
+                <div class="project-popout">
+                  <div class="project-popout-media">
+                    <img
+                      src="assets/project-1.jpg"
+                      alt="Beverage Outlier Dashboard preview"
+                    />
+                  </div>
+
+                  <div class="project-popout-body">
+                    <h3 class="project-popout-title">
+                      Beverage Outlier Dashboard
+                    </h3>
+                    <p class="project-popout-text">
+                      Built to help operators identify unusual beverage movement
+                      across stores using normalized rate-of-sale logic instead
+                      of raw sales noise.
+                    </p>
+
+                    <div class="pill-row">
+                      <span class="pill">SQL</span>
+                      <span class="pill">Tableau</span>
+                      <span class="pill">Stats</span>
+                    </div>
+
+                    <div class="project-actions">
+                      <a
+                        class="btn btn-ghost"
+                        href="https://github.com/YOUR-GITHUB-REPO"
+                        target="_blank"
+                        rel="noreferrer"
+                      >
+                        Code
+                      </a>
+                      <a
+                        class="btn btn-solid"
+                        href="projects/beverage-outlier-dashboard.html"
+                      >
+                        View Project
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- Skills -->
+      <section id="skills" class="section">
+        <div class="container">
+          <header class="section-head">
+            <h2 class="section-title">Technical Skills</h2>
+            <p class="section-subtitle">
+              A practical stack for analytics, experimentation, and
+              dashboarding.
+            </p>
+          </header>
+
+          <div class="cards-grid">
+            <article class="card">
+              <div class="card-title-row">
+                <span class="card-icon">⌘</span>
+                <h3 class="card-title">Programming</h3>
+              </div>
+              <div class="pill-row">
+                <span class="pill">Python</span>
+                <span class="pill">SQL</span>
+                <span class="pill">VBA</span>
+                <span class="pill">JavaScript</span>
+              </div>
+            </article>
+
+            <article class="card">
+              <div class="card-title-row">
+                <span class="card-icon">⚙</span>
+                <h3 class="card-title">Analytics & BI</h3>
+              </div>
+              <div class="pill-row">
+                <span class="pill">Tableau</span>
+                <span class="pill">Power BI</span>
+                <span class="pill">Superset</span>
+                <span class="pill">Excel</span>
+              </div>
+            </article>
+
+            <article class="card">
+              <div class="card-title-row">
+                <span class="card-icon">☁</span>
+                <h3 class="card-title">Data</h3>
+              </div>
+              <div class="pill-row">
+                <span class="pill">Snowflake</span>
+                <span class="pill">Redshift</span>
+                <span class="pill">PostgreSQL</span>
+                <span class="pill">BigQuery</span>
+                <span class="pill">ETL</span>
+                <span class="pill">dbt</span>
+              </div>
+            </article>
+
+            <article class="card">
+              <div class="card-title-row">
+                <span class="card-icon">🧪</span>
+                <h3 class="card-title">Experimentation</h3>
+              </div>
+              <div class="pill-row">
+                <span class="pill">A/B Testing</span>
+                <span class="pill">Cohorts</span>
+                <span class="pill">Attribution</span>
+              </div>
+            </article>
+
+            <article class="card">
+              <div class="card-title-row">
+                <span class="card-icon">🧰</span>
+                <h3 class="card-title">Shipping</h3>
+              </div>
+              <div class="pill-row">
+                <span class="pill">Git</span>
+                <span class="pill">Apps Script</span>
+                <span class="pill">Bot Creation</span>
+                <span class="pill">APIs</span>
+              </div>
+            </article>
+
+            <article class="card">
+              <div class="card-title-row">
+                <span class="card-icon">📌</span>
+                <h3 class="card-title">Soft Skills</h3>
+              </div>
+              <div class="pill-row">
+                <span class="pill">Stakeholders</span>
+                <span class="pill">Storytelling</span>
+                <span class="pill">Requirements</span>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- Experience -->
+      <section id="experience" class="section soft-bg">
+        <div class="container">
+          <header class="section-head">
+            <h2 class="section-title">Professional Experience</h2>
+            <p class="section-subtitle">
+              A few roles where I built analytics that moved metrics.
+            </p>
+          </header>
+
+          <div class="timeline">
+            <article class="xp">
+              <div class="xp-left">
+                <div class="xp-role">Data & Systems Analyst</div>
+                <div class="xp-company">Hofman Hospitality Group</div>
+              </div>
+              <div class="xp-right">
+                <div class="xp-meta">
+                  <span class="xp-date">2023 — Present</span>
+                  <span class="xp-loc">Remote / CA</span>
+                </div>
+                <p class="xp-desc">
+                  Built weekly reporting, outlier dashboards, and category
+                  performance views across multi-store operations.
+                </p>
+                <div class="pill-row">
+                  <span class="pill">SQL</span><span class="pill">Superset</span
+                  ><span class="pill">Excel</span
+                  ><span class="pill">Python</span>
+                </div>
+              </div>
+            </article>
+
+            <article class="xp">
+              <div class="xp-left">
+                <div class="xp-role">Data Management Analyst</div>
+                <div class="xp-company">Rivian</div>
+              </div>
+              <div class="xp-right">
+                <div class="xp-meta">
+                  <span class="xp-date">2021 — 2023</span>
+                  <span class="xp-loc">Irvine, CA</span>
+                </div>
+                <p class="xp-desc">
+                  Supported reporting workflows, KPI definitions, and data
+                  quality checks across operational teams.
+                </p>
+                <div class="pill-row">
+                  <span class="pill">SQL</span><span class="pill">Power BI</span
+                  ><span class="pill">Ops</span><span class="pill">Excel</span>
+                </div>
+              </div>
+            </article>
+
+            <article class="xp">
+              <div class="xp-left">
+                <div class="xp-role">General Manager</div>
+                <div class="xp-company">Sup Noodle Bar</div>
+              </div>
+              <div class="xp-right">
+                <div class="xp-meta">
+                  <span class="xp-date">2019 — 2021</span>
+                  <span class="xp-loc">CA</span>
+                </div>
+                <p class="xp-desc">
+                  Led day-to-day operations; strong understanding of frontline
+                  constraints that shape data.
+                </p>
+                <div class="pill-row">
+                  <span class="pill">Operations</span
+                  ><span class="pill">People</span><span class="pill">P&L</span
+                  ><span class="pill">Management</span>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- Contact -->
+      <section id="contact" class="section soft-bg">
+        <div class="container">
+          <header class="section-head">
+            <h2 class="section-title">Let’s Work Together</h2>
+            <p class="section-subtitle">
+              Have a project or role in mind? Send a note and I’ll reply
+              quickly.
+            </p>
+          </header>
+
+          <div class="contact-grid">
+            <div class="contact-cards">
+              <div class="mini-card">
+                <div class="mini-icon" aria-hidden="true">
+                  <!-- Mail icon -->
+                  <svg viewBox="0 0 24 24" fill="currentColor">
+                    <path
+                      d="M2.5 5.5h19A2.5 2.5 0 0 1 24 8v10a2.5 2.5 0 0 1-2.5 2.5h-19A2.5 2.5 0 0 1 0 18V8a2.5 2.5 0 0 1 2.5-2.5Zm.9 2.2 8.1 6.1c.3.2.7.2 1 0l8.1-6.1a.6.6 0 0 0-.4-1.1H3.8a.6.6 0 0 0-.4 1.1Z"
+                    />
+                  </svg>
+                </div>
+
+                <div class="mini-text">
+                  <div class="mini-title">Email</div>
+                  <a
+                    class="mini-value"
+                    href="mailto:kimeric717@gmail.com?subject=Website%20Inquiry"
+                  >
+                    kimeric717@gmail.com
+                  </a>
+                </div>
+              </div>
+
+              <div class="mini-card">
+                <div class="mini-icon" aria-hidden="true">
+                  <!-- Phone icon -->
+                  <svg viewBox="0 0 24 24" fill="currentColor">
+                    <path
+                      d="M6.6 10.8c1.3 2.5 3.1 4.3 5.6 5.6l1.9-1.9c.2-.2.6-.3.9-.2 1 .3 2.1.5 3.2.5.5 0 .9.4.9.9V20c0 .5-.4.9-.9.9C9.4 20.9 3.1 14.6 3.1 6.9c0-.5.4-.9.9-.9H7c.5 0 .9.4.9.9 0 1.1.2 2.2.5 3.2.1.3 0 .7-.2.9l-1.6 1.6Z"
+                    />
+                  </svg>
+                </div>
+
+                <div class="mini-text">
+                  <div class="mini-title">Phone</div>
+                  <a class="mini-value" href="tel:+15624003124">
+                    +1 (562) 400-3124
+                  </a>
+                </div>
+              </div>
+
+              <div class="mini-card">
+                <div class="mini-icon" aria-hidden="true">
+                  <!-- Mail icon -->
+                  <svg viewBox="0 0 24 24" fill="currentColor">
+                    <path
+                      d="M12 22s7-5.2 7-12a7 7 0 1 0-14 0c0 6.8 7 12 7 12Zm0-9.2a2.8 2.8 0 1 1 0-5.6 2.8 2.8 0 0 1 0 5.6Z"
+                    />
+                  </svg>
+                </div>
+
+                <div class="mini-text">
+                  <div class="mini-title">Location</div>
+                  <a
+                    class="mini-value"
+                    href="https://maps.google.com/?q=Walnut,CA"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    Walnut, CA
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <form class="form" id="contact-form">
+              <h3 class="form-title">Send a Message</h3>
+
+              <div class="form-row">
+                <label class="field">
+                  <span>Your Name</span>
+                  <input
+                    type="text"
+                    name="name"
+                    placeholder="Eric J. Kim"
+                    required
+                  />
+                </label>
+
+                <label class="field">
+                  <span>Your Email</span>
+                  <input
+                    type="email"
+                    name="email"
+                    placeholder="you@email.com"
+                    required
+                  />
+                </label>
+              </div>
+
+              <label class="field">
+                <span>Subject</span>
+                <input
+                  type="text"
+                  name="subject"
+                  placeholder="Project inquiry"
+                />
+              </label>
+
+              <label class="field">
+                <span>Message</span>
+                <textarea
+                  name="message"
+                  rows="5"
+                  placeholder="Tell me what you’re building…"
+                  required
+                ></textarea>
+              </label>
+
+              <button class="btn btn-solid btn-wide" type="submit">
+                <svg
+                  class="btn-icon"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                  aria-hidden="true"
+                >
+                  <path d="M2 21 23 12 2 3v7l15 2-15 2v7Z" />
+                </svg>
+                Send Message
+              </button>
+
+              <p class="form-note">
+                This form opens your visitor’s email app with a pre-filled
+                message to me.
+              </p>
+            </form>
+          </div>
+        </div>
+      </section>
+
+      <footer class="footer">
+        <div class="container footer-inner">
+          <div class="footer-left">
+            <div class="footer-name">Eric J. Kim</div>
+            <div class="footer-tag">Data Analyst • Aspiring Data Scientist</div>
+          </div>
+          <div class="footer-right">
+            <a href="#top" class="footer-link">Back to top ↑</a>
+          </div>
+        </div>
+      </footer>
+    </main>
+
+    <script src="script.js" defer></script>
+  </body>
+</html>
