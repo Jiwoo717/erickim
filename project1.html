@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Beverage Outlier Dashboard — Eric J. Kim</title>
+    <meta
+      name="description"
+      content="Case study for Eric Kim's Beverage Outlier Dashboard project."
+    />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../styles.css" />
+  </head>
+
+  <body>
+    <header class="topbar" role="banner">
+      <div class="container topbar-inner">
+        <a class="brand" href="../index.html#top" aria-label="Home">
+          <span class="brand-name">Eric J. Kim</span>
+        </a>
+
+        <nav class="nav" aria-label="Primary">
+          <a class="nav-link" href="../index.html#projects">Projects</a>
+          <a class="nav-link" href="../index.html#skills">Skills</a>
+          <a class="nav-link" href="../index.html#experience">Experience</a>
+          <a class="nav-link" href="../index.html#contact">Contact</a>
+        </nav>
+
+        <button class="nav-toggle" aria-label="Open menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+
+      <div class="mobile-nav container" hidden>
+        <a class="nav-link" href="../index.html#projects">Projects</a>
+        <a class="nav-link" href="../index.html#skills">Skills</a>
+        <a class="nav-link" href="../index.html#experience">Experience</a>
+        <a class="nav-link" href="../index.html#contact">Contact</a>
+      </div>
+    </header>
+
+    <main>
+      <section class="section">
+        <div class="container project-page">
+          <a class="btn btn-outline back-link" href="../index.html#projects">
+            ← Back to Projects
+          </a>
+
+          <div class="project-page-hero">
+            <div class="project-page-copy">
+              <span class="badge-hero">Case Study</span>
+              <h1 class="project-page-title">Beverage Outlier Dashboard</h1>
+              <p class="project-page-subtitle">
+                A dashboard built to identify unusual beverage sales movement
+                across stores using normalized rate-of-sale logic.
+              </p>
+
+              <div class="pill-row project-page-pills">
+                <span class="pill">SQL</span>
+                <span class="pill">Tableau</span>
+                <span class="pill">Stats</span>
+                <span class="pill">Operations Analytics</span>
+              </div>
+
+              <div class="project-actions project-page-actions">
+                <a
+                  class="btn btn-ghost"
+                  href="https://github.com/YOUR-GITHUB-REPO"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  View Code
+                </a>
+                <a
+                  class="btn btn-solid"
+                  href="#"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  Live Demo
+                </a>
+              </div>
+            </div>
+
+            <div class="project-page-image-card">
+              <img
+                src="../assets/project-1.jpg"
+                alt="Beverage Outlier Dashboard screenshot"
+              />
+            </div>
+          </div>
+
+          <div class="project-page-grid">
+            <article class="project-page-main">
+              <section class="project-page-section">
+                <h2>Overview</h2>
+                <p>
+                  This project was designed to help operators quickly identify
+                  meaningful changes in beverage performance across stores.
+                  Instead of relying on raw sales alone, it used normalized
+                  rate-of-sale logic to make fairer comparisons.
+                </p>
+              </section>
+
+              <section class="project-page-section">
+                <h2>Problem</h2>
+                <p>
+                  Raw sales changes can be misleading because traffic, mix, and
+                  store volume vary widely. The goal was to surface true
+                  outliers, not just noisy differences.
+                </p>
+              </section>
+
+              <section class="project-page-section">
+                <h2>Approach</h2>
+                <p>
+                  I built a reporting layer that normalized performance,
+                  compared stores against expected behavior, and highlighted
+                  unusual movement for faster review.
+                </p>
+              </section>
+
+              <section class="project-page-section">
+                <h2>Outcome</h2>
+                <p>
+                  The result was a cleaner operational view that made it easier
+                  to investigate change, explain variance, and focus follow-up
+                  where it mattered most.
+                </p>
+              </section>
+            </article>
+
+            <aside class="project-page-side">
+              <div class="project-page-side-card">
+                <h3>Role</h3>
+                <p>Data Analyst</p>
+              </div>
+
+              <div class="project-page-side-card">
+                <h3>Tools</h3>
+                <p>SQL, Tableau, Excel</p>
+              </div>
+
+              <div class="project-page-side-card">
+                <h3>Focus</h3>
+                <p>Outlier detection, normalization, dashboard design</p>
+              </div>
+            </aside>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <script src="../script.js" defer></script>
+  </body>
+</html>
