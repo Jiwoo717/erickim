@@ -1234,3 +1234,22 @@
       max-width: none;
     }
   }
+
+.project-embed {
+  margin: 3rem 0;
+}
+
+.embed-shell {
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid #ddd;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+}
+
+.embed-shell iframe {
+  display: block;
+  width: 100%;
+  height: 900px;
+  border: 0;
+  background: #fff;
+}
