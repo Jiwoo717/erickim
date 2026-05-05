@@ -1,5 +1,7 @@
 import type { WindowId, WindowKind } from '../types'
 
+const assetBase = `${import.meta.env.BASE_URL}assets/`
+
 type WindowsIconProps = {
   id?: WindowId
   kind?: WindowKind
@@ -31,25 +33,25 @@ const iconClassByKind: Record<WindowKind, string> = {
 }
 
 const imageIconById: Partial<Record<WindowId, string>> = {
-  computer: '/assets/computer.png',
-  info: '/assets/info.png',
-  'work-history': '/assets/briefcase.png',
-  trash: '/assets/recycle_bin.png',
-  calculator: '/assets/calculator.png',
-  fallout: '/assets/fallout-icon.png',
-  'dark-and-darker': '/assets/blacksmith-icon.png',
+  computer: `${assetBase}computer.png`,
+  info: `${assetBase}info.png`,
+  'work-history': `${assetBase}briefcase.png`,
+  trash: `${assetBase}recycle_bin.png`,
+  calculator: `${assetBase}calculator.png`,
+  fallout: `${assetBase}fallout-icon.png`,
+  'dark-and-darker': `${assetBase}blacksmith-icon.png`,
 }
 
 const imageIconByKind: Partial<Record<WindowKind, string>> = {
-  folder: '/assets/file.png',
-  markdown: '/assets/notepad.png',
-  document: '/assets/notepad.png',
+  folder: `${assetBase}file.png`,
+  markdown: `${assetBase}notepad.png`,
+  document: `${assetBase}notepad.png`,
 }
 
 function WindowsIcon({ id, kind = 'folder', size = 'desktop' }: WindowsIconProps) {
   const iconClass = id ? iconClassById[id] : undefined
   const imageIcon =
-    (id?.startsWith('folder-') ? '/assets/folder.png' : undefined) ??
+    (id?.startsWith('folder-') ? `${assetBase}folder.png` : undefined) ??
     (id ? imageIconById[id] : undefined) ??
     imageIconByKind[kind]
 

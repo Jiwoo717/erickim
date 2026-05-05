@@ -1,5 +1,7 @@
 import type { DesktopItem, WindowKind } from '../types'
 
+const assetBase = `${import.meta.env.BASE_URL}assets/`
+
 export type PortfolioEntry = {
   id: string
   name: string
@@ -32,7 +34,7 @@ export const portfolioEntries: Record<string, PortfolioEntry> = {
     kind: 'document',
     icon: 'info',
     folderId: 'desktop',
-    imageUrl: './assets/profile2.jpg',
+    imageUrl: `${assetBase}profile2.jpg`,
     markdown: `# Eric J. Kim
 
 I build analytics that are useful in real operating environments: clean SQL, sharper KPI definitions, and dashboards that help people make decisions.
@@ -78,7 +80,7 @@ Stack: SQL, Python, BI tools, Excel, and operational reporting`,
     kind: 'pdf',
     icon: 'pdf',
     folderId: 'desktop',
-    pdfUrl: './assets/Eric-Kim-Resume.pdf',
+    pdfUrl: `${assetBase}Eric-Kim-Resume.pdf`,
     defaultWidth: 980,
     defaultHeight: 720,
   },
@@ -171,7 +173,7 @@ What I'm playing these days...`,
     icon: 'pdf',
     openTargetId: 'resume',
     folderId: 'computer',
-    pdfUrl: './assets/Eric-Kim-Resume.pdf',
+    pdfUrl: `${assetBase}Eric-Kim-Resume.pdf`,
     defaultWidth: 980,
     defaultHeight: 720,
   },

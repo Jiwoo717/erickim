@@ -1,4 +1,6 @@
 function Resume() {
+  const resumeUrl = `${import.meta.env.BASE_URL}assets/Eric-Kim-Resume.pdf`
+
   return (
     <div className="stacked-panels">
       <section className="panel">
@@ -10,7 +12,7 @@ function Resume() {
         </p>
         <a
           className="panel-link"
-          href="./assets/Eric-Kim-Resume.pdf"
+          href={resumeUrl}
           target="_blank"
           rel="noreferrer"
         >

@@ -994,7 +994,7 @@
 
 .placeholder-fallout .placeholder-emblem {
   border: 1px solid #f2cc32;
-  background: #3d94ef url("/assets/fallout-icon.png") center / cover no-repeat;
+  background: #3d94ef url("./fallout-icon.png") center / cover no-repeat;
   box-shadow: 0 0 24px rgba(242, 204, 50, 0.26);
 }
 
@@ -1007,7 +1007,7 @@
 
 .placeholder-dark .placeholder-emblem {
   border: 1px solid #6b5533;
-  background: #071018 url("/assets/blacksmith-icon.png") center / cover no-repeat;
+  background: #071018 url("./blacksmith-icon.png") center / cover no-repeat;
   box-shadow: 0 0 26px rgba(214, 180, 106, 0.18);
 }
 

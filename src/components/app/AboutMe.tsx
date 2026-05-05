@@ -1,7 +1,9 @@
 function AboutMe() {
+  const profileImageUrl = `${import.meta.env.BASE_URL}assets/profile2.jpg`
+
   return (
     <div className="about-layout">
-      <img src="./assets/profile2.jpg" alt="Eric Kim portrait" className="about-photo" />
+      <img src={profileImageUrl} alt="Eric Kim portrait" className="about-photo" />
 
       <div className="panel">
         <div className="panel-kicker">Profile</div>

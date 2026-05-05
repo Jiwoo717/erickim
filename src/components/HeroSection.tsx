@@ -10,6 +10,7 @@ import type { PortfolioEntry } from '../data/portfolioFileSystem'
 import type { WindowId, WindowState } from '../types'
 
 const initialWindows: WindowState[] = []
+const wallpaperUrl = `${import.meta.env.BASE_URL}assets/waterfall.png`
 
 type ContextMenuState = {
   x: number
@@ -411,14 +412,14 @@ function HeroSection() {
 
   return (
     <div className="desktop-app">
-      <div
-        className="desktop-wallpaper"
-        aria-hidden="true"
-        style={{
-          backgroundImage:
-            'linear-gradient(rgba(15, 23, 42, 0.18), rgba(15, 23, 42, 0.28)), url("./assets/waterfall.jpg")',
-        }}
-      />
+        <div
+          className="desktop-wallpaper"
+          aria-hidden="true"
+          style={{
+            backgroundImage:
+              `linear-gradient(rgba(15, 23, 42, 0.18), rgba(15, 23, 42, 0.28)), url("${wallpaperUrl}")`,
+          }}
+        />
       <div className="desktop-grid" aria-hidden="true" />
 
       <main
