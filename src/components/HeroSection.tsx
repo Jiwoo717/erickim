@@ -77,6 +77,24 @@ function HeroSection() {
       setWindows((current) => {
         const maxZ = current.reduce((max, item) => Math.max(max, item.zIndex), 1)
         const offset = current.filter((item) => item.open).length * 24
+        const scene = desktopSceneRef.current
+        const availableWidth = scene?.clientWidth ?? window.innerWidth
+        const availableHeight = scene?.clientHeight ?? window.innerHeight
+        const isLargeWebApp = targetEntry.kind === 'webapp'
+        const maxWidth = Math.max(320, availableWidth - 36)
+        const maxHeight = Math.max(240, availableHeight - 36)
+        const width = isLargeWebApp
+          ? Math.min(maxWidth, Math.max(640, Math.floor(availableWidth * 0.8)))
+          : targetEntry.defaultWidth
+        const height = isLargeWebApp
+          ? Math.min(maxHeight, Math.max(480, Math.floor(availableHeight * 0.8)))
+          : targetEntry.defaultHeight
+        const x = isLargeWebApp
+          ? Math.max(18, Math.floor((availableWidth - width) / 2))
+          : 240 + offset
+        const y = isLargeWebApp
+          ? Math.max(18, Math.floor((availableHeight - height) / 2))
+          : 116 + offset
 
         return [
           ...current,
@@ -87,10 +105,10 @@ function HeroSection() {
             kind: targetEntry.kind,
             open: true,
             minimized: false,
-            x: 240 + offset,
-            y: 116 + offset,
-            width: targetEntry.defaultWidth,
-            height: targetEntry.defaultHeight,
+            x,
+            y,
+            width,
+            height,
             defaultWidth: targetEntry.defaultWidth,
             defaultHeight: targetEntry.defaultHeight,
             zIndex: maxZ + 1,
