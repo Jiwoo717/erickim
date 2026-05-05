@@ -1,6 +1,13 @@
 export type WindowId = string
 
-export type WindowKind = 'folder' | 'markdown' | 'document' | 'pdf' | 'calculator' | 'placeholder'
+export type WindowKind =
+  | 'folder'
+  | 'markdown'
+  | 'document'
+  | 'pdf'
+  | 'calculator'
+  | 'placeholder'
+  | 'webapp'
 
 export type DesktopItem = {
   id: WindowId

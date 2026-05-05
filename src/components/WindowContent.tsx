@@ -50,6 +50,14 @@ function WindowContent({
     )
   }
 
+  if (entry.kind === 'webapp') {
+    return (
+      <div className="webapp-viewer">
+        <iframe title={entry.name} src={entry.appUrl} />
+      </div>
+    )
+  }
+
   if (entry.kind === 'placeholder') {
     return (
       <PlaceholderApp

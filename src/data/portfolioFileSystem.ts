@@ -14,6 +14,7 @@ export type PortfolioEntry = {
   imageUrl?: string
   placeholderTheme?: 'fallout' | 'dark'
   pdfUrl?: string
+  appUrl?: string
   defaultWidth: number
   defaultHeight: number
 }
@@ -218,6 +219,16 @@ Experimentation / BI / Analysis
 A reporting structure built around the decisions leaders actually need to make, not just the charts they can look at.`,
     defaultWidth: 580,
     defaultHeight: 390,
+  },
+  'projects-viz-builder': {
+    id: 'projects-viz-builder',
+    name: 'Viz Builder.app',
+    kind: 'webapp',
+    icon: 'calculator',
+    folderId: 'projects',
+    appUrl: `${import.meta.env.BASE_URL}viz-builder/index.html`,
+    defaultWidth: 1180,
+    defaultHeight: 760,
   },
   'work-hofman': {
     id: 'work-hofman',

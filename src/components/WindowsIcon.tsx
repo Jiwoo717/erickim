@@ -19,6 +19,7 @@ const iconClassById: Partial<Record<WindowId, string>> = {
   resume: 'windows-icon-pdf',
   trash: 'windows-icon-trash',
   calculator: 'windows-icon-calculator',
+  'projects-viz-builder': 'windows-icon-calculator',
   fallout: 'windows-icon-fallout',
   'dark-and-darker': 'windows-icon-dark',
 }
@@ -30,6 +31,7 @@ const iconClassByKind: Record<WindowKind, string> = {
   pdf: 'windows-icon-pdf',
   calculator: 'windows-icon-calculator',
   placeholder: 'windows-icon-folder',
+  webapp: 'windows-icon-calculator',
 }
 
 const imageIconById: Partial<Record<WindowId, string>> = {
