@@ -58,6 +58,10 @@ function WindowContent({
     )
   }
 
+  if (entry.kind === 'externalProject') {
+    return <ExternalProjectApp entry={entry} />
+  }
+
   if (entry.kind === 'placeholder') {
     return (
       <PlaceholderApp
@@ -167,6 +171,40 @@ function MarkdownDocument({
 
         return <p key={key}>{line}</p>
       })}
+    </article>
+  )
+}
+
+function ExternalProjectApp({ entry }: { entry: PortfolioEntry }) {
+  function openExternal(url?: string) {
+    if (!url) return
+    window.open(url, '_blank', 'noopener,noreferrer')
+  }
+
+  return (
+    <article className="external-project-app">
+      <div className="external-project-hero">
+        {entry.screenshotUrl ? (
+          <img src={entry.screenshotUrl} alt={`${entry.name} screenshot`} />
+        ) : null}
+      </div>
+
+      <div className="external-project-body">
+        <div>
+          <span className="external-project-kicker">Streamlit Project</span>
+          <h1>{entry.name.replace('.app', '')}</h1>
+          <p>{entry.summary}</p>
+        </div>
+
+        <div className="external-project-actions">
+          <button type="button" onClick={() => openExternal(entry.liveUrl)}>
+            Open live dashboard
+          </button>
+          <button type="button" onClick={() => openExternal(entry.codeUrl)}>
+            View GitHub repo
+          </button>
+        </div>
+      </div>
     </article>
   )
 }

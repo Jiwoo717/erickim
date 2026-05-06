@@ -8,6 +8,7 @@ export type WindowKind =
   | 'calculator'
   | 'placeholder'
   | 'webapp'
+  | 'externalProject'
 
 export type DesktopItem = {
   id: WindowId

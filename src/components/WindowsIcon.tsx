@@ -32,6 +32,7 @@ const iconClassByKind: Record<WindowKind, string> = {
   calculator: 'windows-icon-calculator',
   placeholder: 'windows-icon-folder',
   webapp: 'windows-icon-calculator',
+  externalProject: 'windows-icon-calculator',
 }
 
 const imageIconById: Partial<Record<WindowId, string>> = {

@@ -80,7 +80,8 @@ function HeroSection() {
         const scene = desktopSceneRef.current
         const availableWidth = scene?.clientWidth ?? window.innerWidth
         const availableHeight = scene?.clientHeight ?? window.innerHeight
-        const isLargeWebApp = targetEntry.kind === 'webapp'
+        const isLargeWebApp =
+          targetEntry.kind === 'webapp' || targetEntry.kind === 'externalProject'
         const maxWidth = Math.max(320, availableWidth - 36)
         const maxHeight = Math.max(240, availableHeight - 36)
         const width = isLargeWebApp

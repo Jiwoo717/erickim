@@ -868,6 +868,93 @@
   background: #f5f7fb;
 }
 
+.external-project-app {
+  display: grid;
+  grid-template-rows: minmax(280px, 1fr) auto;
+  height: 100%;
+  overflow: auto;
+  background: #0b1220;
+  color: #e5edf8;
+  font-family: "Segoe UI", Tahoma, sans-serif;
+}
+
+.external-project-hero {
+  min-height: 280px;
+  padding: 20px;
+  background:
+    radial-gradient(circle at top left, rgba(59, 130, 246, 0.22), transparent 35%),
+    linear-gradient(180deg, #111827, #0b1220);
+}
+
+.external-project-hero img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  min-height: 280px;
+  border: 1px solid rgba(191, 219, 254, 0.24);
+  border-radius: 14px;
+  object-fit: cover;
+  object-position: top center;
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.38);
+}
+
+.external-project-body {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 22px;
+  align-items: end;
+  padding: 22px 24px 24px;
+  border-top: 1px solid rgba(191, 219, 254, 0.14);
+  background: rgba(15, 23, 42, 0.92);
+}
+
+.external-project-kicker {
+  color: #93c5fd;
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.external-project-body h1 {
+  margin: 8px 0 0;
+  color: #f8fafc;
+  font-size: clamp(1.65rem, 3vw, 2.55rem);
+}
+
+.external-project-body p {
+  max-width: 78ch;
+  margin: 10px 0 0;
+  color: rgba(226, 232, 240, 0.78);
+  font-size: 0.98rem;
+  line-height: 1.65;
+}
+
+.external-project-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: flex-end;
+}
+
+.external-project-actions button {
+  padding: 10px 13px;
+  border: 1px solid rgba(147, 197, 253, 0.42);
+  border-radius: 11px;
+  background: rgba(37, 99, 235, 0.3);
+  color: #eff6ff;
+  cursor: pointer;
+  font: inherit;
+  white-space: nowrap;
+}
+
+.external-project-actions button:hover,
+.external-project-actions button:focus-visible {
+  background: rgba(59, 130, 246, 0.44);
+  border-color: rgba(191, 219, 254, 0.72);
+  outline: none;
+}
+
 .file-document {
   overflow: auto;
   padding: 24px 30px;
@@ -1535,6 +1622,14 @@
   .fact-grid,
   .start-menu-grid {
     grid-template-columns: 1fr;
+  }
+
+  .external-project-body {
+    grid-template-columns: 1fr;
+  }
+
+  .external-project-actions {
+    justify-content: flex-start;
   }
 
   .desktop-scene {

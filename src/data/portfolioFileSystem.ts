@@ -16,6 +16,10 @@ export type PortfolioEntry = {
   placeholderTheme?: 'fallout' | 'dark'
   pdfUrl?: string
   appUrl?: string
+  liveUrl?: string
+  codeUrl?: string
+  screenshotUrl?: string
+  summary?: string
   defaultWidth: number
   defaultHeight: number
 }
@@ -231,13 +235,26 @@ A reporting structure built around the decisions leaders actually need to make, 
     defaultWidth: 1180,
     defaultHeight: 760,
   },
+  'projects-streamlit': {
+    id: 'projects-streamlit',
+    name: 'Streamlit',
+    kind: 'folder',
+    icon: 'folder',
+    folderId: 'projects',
+    defaultWidth: 620,
+    defaultHeight: 430,
+  },
   'projects-nba-dashboard': {
     id: 'projects-nba-dashboard',
     name: 'NBA Streamlit Dashboard.app',
-    kind: 'webapp',
+    kind: 'externalProject',
     icon: 'calculator',
-    folderId: 'projects',
-    appUrl: nbaDashboardUrl,
+    folderId: 'projects-streamlit',
+    liveUrl: nbaDashboardUrl,
+    codeUrl: 'https://github.com/Jiwoo717/nba-streamlit-dashboard',
+    screenshotUrl: `${assetBase}nba-streamlit-dashboard.png`,
+    summary:
+      'A Streamlit analytics dashboard that separates NBA team efficiency from hidden-value roster analysis. The app uses local CSV data, team/player impact metrics, Plotly visualizations, and a focused sidebar toggle for the two dashboard views.',
     defaultWidth: 1280,
     defaultHeight: 820,
   },
