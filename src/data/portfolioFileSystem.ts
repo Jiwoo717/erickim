@@ -1,6 +1,7 @@
 import type { DesktopItem, WindowKind } from '../types'
 
 const assetBase = `${import.meta.env.BASE_URL}assets/`
+const nbaDashboardUrl = 'https://nba-streamlit-dashboard.streamlit.app'
 
 export type PortfolioEntry = {
   id: string
@@ -229,6 +230,16 @@ A reporting structure built around the decisions leaders actually need to make, 
     appUrl: `${import.meta.env.BASE_URL}viz-builder/index.html`,
     defaultWidth: 1180,
     defaultHeight: 760,
+  },
+  'projects-nba-dashboard': {
+    id: 'projects-nba-dashboard',
+    name: 'NBA Streamlit Dashboard.app',
+    kind: 'webapp',
+    icon: 'calculator',
+    folderId: 'projects',
+    appUrl: nbaDashboardUrl,
+    defaultWidth: 1280,
+    defaultHeight: 820,
   },
   'work-hofman': {
     id: 'work-hofman',

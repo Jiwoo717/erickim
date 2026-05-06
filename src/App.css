@@ -1076,6 +1076,30 @@
   line-height: 1.75;
 }
 
+.project-action-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 14px;
+}
+
+.project-action-row button {
+  padding: 9px 12px;
+  border: 1px solid rgba(191, 219, 254, 0.34);
+  border-radius: 10px;
+  background: rgba(37, 99, 235, 0.18);
+  color: #dbeafe;
+  cursor: pointer;
+  font: inherit;
+}
+
+.project-action-row button:hover,
+.project-action-row button:focus-visible {
+  background: rgba(59, 130, 246, 0.28);
+  border-color: rgba(191, 219, 254, 0.58);
+  outline: none;
+}
+
 .fact-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
