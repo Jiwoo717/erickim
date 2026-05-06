@@ -10,7 +10,7 @@ import type { PortfolioEntry } from '../data/portfolioFileSystem'
 import type { WindowId, WindowState } from '../types'
 
 const initialWindows: WindowState[] = []
-const wallpaperUrl = `${import.meta.env.BASE_URL}assets/waterfall.png`
+const wallpaperUrl = `${import.meta.env.BASE_URL}assets/background.png`
 
 type ContextMenuState = {
   x: number
