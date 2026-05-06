@@ -1,0 +1,36 @@
+name: Keep Streamlit Dashboard Awake
+
+on:
+  schedule:
+    - cron: '0 */6 * * *'
+  workflow_dispatch:
+
+jobs:
+  ping-streamlit:
+    name: Ping NBA dashboard
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+
+    steps:
+      - name: Check Streamlit health
+        run: |
+          curl \
+            --silent \
+            --show-error \
+            --fail \
+            --max-time 60 \
+            --retry 2 \
+            --retry-delay 10 \
+            "https://nba-app-dashboard-5jhhfy6uguvh3d8enyjf4u.streamlit.app/healthz"
+
+      - name: Request Streamlit app shell
+        run: |
+          curl \
+            --silent \
+            --show-error \
+            --fail \
+            --max-time 60 \
+            --retry 2 \
+            --retry-delay 10 \
+            "https://nba-app-dashboard-5jhhfy6uguvh3d8enyjf4u.streamlit.app/?embed=true" \
+            > /dev/null
