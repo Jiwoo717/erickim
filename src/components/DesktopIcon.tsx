@@ -22,11 +22,14 @@ function DesktopIcon({
   onClick,
   onDoubleClick,
 }: DesktopIconProps) {
+  const horizontalPosition =
+    icon.x < 0 ? { right: Math.abs(icon.x), top: icon.y } : { left: icon.x, top: icon.y }
+
   return (
     <motion.button
       type="button"
       className={`desktop-icon ${selected ? 'is-selected' : ''}`}
-      style={{ left: icon.x, top: icon.y }}
+      style={horizontalPosition}
       initial={{ opacity: 0, scale: 0.92 }}
       animate={{ opacity: 1, scale: 1 }}
       transition={{ delay: index * 0.04, duration: 0.18 }}

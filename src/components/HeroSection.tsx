@@ -1,7 +1,9 @@
 import type { MouseEvent as ReactMouseEvent } from 'react'
 import { useEffect, useRef, useState } from 'react'
 import { AnimatePresence } from 'framer-motion'
+import ArcadeWelcomeMarquee from './ArcadeWelcomeMarquee'
 import DesktopIcon from './DesktopIcon'
+import MyspaceMusicPlayer from './MyspaceMusicPlayer'
 import StartMenu from './StartMenu'
 import Taskbar from './Taskbar'
 import Window from './Window'
@@ -19,6 +21,13 @@ type ContextMenuState = {
   folderId: WindowId
   itemId?: WindowId
 } | null
+
+const iconWidth = 70
+const iconHeight = 82
+
+function getDesktopIconLeft(icon: { x: number }, sceneWidth: number) {
+  return icon.x < 0 ? Math.max(0, sceneWidth + icon.x - iconWidth) : icon.x
+}
 
 function HeroSection() {
   const desktopSceneRef = useRef<HTMLElement | null>(null)
@@ -80,20 +89,23 @@ function HeroSection() {
         const scene = desktopSceneRef.current
         const availableWidth = scene?.clientWidth ?? window.innerWidth
         const availableHeight = scene?.clientHeight ?? window.innerHeight
-        const isLargeWebApp =
+        const isLargeApp =
           targetEntry.kind === 'webapp' || targetEntry.kind === 'externalProject'
+        const isLargeResume = targetEntry.kind === 'pdf' && targetEntry.id === 'resume'
+        const isLargeWindow = isLargeApp || isLargeResume
+        const windowScale = isLargeResume ? 0.75 : 0.8
         const maxWidth = Math.max(320, availableWidth - 36)
         const maxHeight = Math.max(240, availableHeight - 36)
-        const width = isLargeWebApp
-          ? Math.min(maxWidth, Math.max(640, Math.floor(availableWidth * 0.8)))
+        const width = isLargeWindow
+          ? Math.min(maxWidth, Math.max(isLargeResume ? 720 : 640, Math.floor(availableWidth * windowScale)))
           : targetEntry.defaultWidth
-        const height = isLargeWebApp
-          ? Math.min(maxHeight, Math.max(480, Math.floor(availableHeight * 0.8)))
+        const height = isLargeWindow
+          ? Math.min(maxHeight, Math.max(isLargeResume ? 560 : 480, Math.floor(availableHeight * windowScale)))
           : targetEntry.defaultHeight
-        const x = isLargeWebApp
+        const x = isLargeWindow
           ? Math.max(18, Math.floor((availableWidth - width) / 2))
           : 240 + offset
-        const y = isLargeWebApp
+        const y = isLargeWindow
           ? Math.max(18, Math.floor((availableHeight - height) / 2))
           : 116 + offset
 
@@ -309,9 +321,11 @@ function HeroSection() {
     const icon = icons.find((item) => item.id === id)
     if (!icon) return
 
+    const iconLeft = getDesktopIconLeft(icon, rect.width)
+
     setSelectedIcons([id])
     const offset = {
-      x: event.clientX - rect.left - icon.x,
+      x: event.clientX - rect.left - iconLeft,
       y: event.clientY - rect.top - icon.y,
     }
 
@@ -388,10 +402,10 @@ function HeroSection() {
       setSelectedIcons(
         icons
           .filter((item) => {
-            const iconLeft = item.x
-            const iconRight = item.x + 70
+            const iconLeft = getDesktopIconLeft(item, rect.width)
+            const iconRight = iconLeft + iconWidth
             const iconTop = item.y
-            const iconBottom = item.y + 82
+            const iconBottom = item.y + iconHeight
 
             return (
               iconRight >= minX &&
@@ -461,6 +475,10 @@ function HeroSection() {
             />
           ))}
         </section>
+
+        <ArcadeWelcomeMarquee />
+
+        <MyspaceMusicPlayer />
 
         {selectionBox ? (
           <div

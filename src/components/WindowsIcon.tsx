@@ -41,6 +41,8 @@ const imageIconById: Partial<Record<WindowId, string>> = {
   'work-history': `${assetBase}briefcase.png`,
   trash: `${assetBase}recycle_bin.png`,
   calculator: `${assetBase}calculator.png`,
+  'projects-viz-builder': `${assetBase}viz-builder.png`,
+  'projects-nba-dashboard': `${assetBase}streamlit.png`,
   fallout: `${assetBase}fallout-icon.png`,
   'dark-and-darker': `${assetBase}blacksmith-icon.png`,
 }

@@ -176,16 +176,59 @@ function MarkdownDocument({
 }
 
 function ExternalProjectApp({ entry }: { entry: PortfolioEntry }) {
+  const screenshots = entry.screenshotUrls ?? (entry.screenshotUrl ? [entry.screenshotUrl] : [])
+  const [activeScreenshot, setActiveScreenshot] = useState(0)
+  const currentScreenshot = screenshots[activeScreenshot]
+  const hasCarousel = screenshots.length > 1
+
   function openExternal(url?: string) {
     if (!url) return
     window.open(url, '_blank', 'noopener,noreferrer')
   }
 
+  function showPreviousScreenshot() {
+    setActiveScreenshot((current) => (current === 0 ? screenshots.length - 1 : current - 1))
+  }
+
+  function showNextScreenshot() {
+    setActiveScreenshot((current) => (current + 1) % screenshots.length)
+  }
+
   return (
     <article className="external-project-app">
       <div className="external-project-hero">
-        {entry.screenshotUrl ? (
-          <img src={entry.screenshotUrl} alt={`${entry.name} screenshot`} />
+        {currentScreenshot ? (
+          <div className="external-project-carousel">
+            <div className="external-project-frame">
+              <img
+                src={currentScreenshot}
+                alt={`${entry.name} screenshot ${activeScreenshot + 1}`}
+              />
+            </div>
+
+            {hasCarousel ? (
+              <div className="external-project-carousel-controls" aria-label="Project screenshots">
+                <button type="button" onClick={showPreviousScreenshot} aria-label="Previous screenshot">
+                  <span aria-hidden="true">‹</span>
+                </button>
+                <div className="external-project-dots">
+                  {screenshots.map((screenshot, index) => (
+                    <button
+                      key={screenshot}
+                      type="button"
+                      className={index === activeScreenshot ? 'is-active' : ''}
+                      onClick={() => setActiveScreenshot(index)}
+                      aria-label={`Show screenshot ${index + 1}`}
+                      aria-current={index === activeScreenshot ? 'true' : undefined}
+                    />
+                  ))}
+                </div>
+                <button type="button" onClick={showNextScreenshot} aria-label="Next screenshot">
+                  <span aria-hidden="true">›</span>
+                </button>
+              </div>
+            ) : null}
+          </div>
         ) : null}
       </div>
 

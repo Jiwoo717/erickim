@@ -19,6 +19,7 @@ export type PortfolioEntry = {
   liveUrl?: string
   codeUrl?: string
   screenshotUrl?: string
+  screenshotUrls?: string[]
   summary?: string
   defaultWidth: number
   defaultHeight: number
@@ -183,57 +184,38 @@ What I'm playing these days...`,
     defaultWidth: 980,
     defaultHeight: 720,
   },
-  'projects-dashboard': {
-    id: 'projects-dashboard',
-    name: 'Beverage Outlier Dashboard.md',
-    kind: 'markdown',
-    icon: 'markdown',
+  'projects-viz-builder-folder': {
+    id: 'projects-viz-builder-folder',
+    name: 'Viz Builder',
+    kind: 'folder',
+    icon: 'folder',
     folderId: 'projects',
-    markdown: `# Beverage Outlier Dashboard
-
-SQL / Tableau / Statistics
-
-A store-level monitoring tool using normalized rate-of-sale logic to separate meaningful changes from everyday reporting noise.`,
-    defaultWidth: 580,
-    defaultHeight: 390,
-  },
-  'projects-ops': {
-    id: 'projects-ops',
-    name: 'Operations Performance Views.md',
-    kind: 'markdown',
-    icon: 'markdown',
-    folderId: 'projects',
-    markdown: `# Operations Performance Views
-
-Superset / Excel / Python
-
-Weekly operational reporting that made KPI movement, anomalies, and category shifts easier to investigate quickly.`,
-    defaultWidth: 580,
-    defaultHeight: 390,
-  },
-  'projects-metrics': {
-    id: 'projects-metrics',
-    name: 'Metric Storytelling Framework.md',
-    kind: 'markdown',
-    icon: 'markdown',
-    folderId: 'projects',
-    markdown: `# Metric Storytelling Framework
-
-Experimentation / BI / Analysis
-
-A reporting structure built around the decisions leaders actually need to make, not just the charts they can look at.`,
-    defaultWidth: 580,
-    defaultHeight: 390,
+    defaultWidth: 620,
+    defaultHeight: 430,
   },
   'projects-viz-builder': {
     id: 'projects-viz-builder',
     name: 'Viz Builder.app',
     kind: 'webapp',
     icon: 'calculator',
-    folderId: 'projects',
+    folderId: 'projects-viz-builder-folder',
     appUrl: `${import.meta.env.BASE_URL}viz-builder/index.html`,
     defaultWidth: 1180,
     defaultHeight: 760,
+  },
+  'projects-viz-builder-readme': {
+    id: 'projects-viz-builder-readme',
+    name: 'README.md',
+    kind: 'markdown',
+    icon: 'markdown',
+    folderId: 'projects-viz-builder-folder',
+    markdown: `# Viz Builder
+
+A browser-based visualization builder for quickly turning structured data into presentation-ready charts.
+
+The project is packaged as a portfolio app so the live tool and supporting documentation can sit together in the same folder.`,
+    defaultWidth: 620,
+    defaultHeight: 420,
   },
   'projects-streamlit': {
     id: 'projects-streamlit',
@@ -253,6 +235,12 @@ A reporting structure built around the decisions leaders actually need to make, 
     liveUrl: nbaDashboardUrl,
     codeUrl: 'https://github.com/Jiwoo717/nba-streamlit-dashboard',
     screenshotUrl: `${assetBase}nba-streamlit-dashboard.png`,
+    screenshotUrls: [
+      `${assetBase}nba-streamlit-dashboard.png`,
+      `${assetBase}nbachart1.png`,
+      `${assetBase}nbachart2.png`,
+      `${assetBase}nbachart3.png`,
+    ],
     summary:
       'A Streamlit analytics dashboard that separates NBA team efficiency from hidden-value roster analysis. The app uses local CSV data, team/player impact metrics, Plotly visualizations, and a focused sidebar toggle for the two dashboard views.',
     defaultWidth: 1280,
@@ -331,10 +319,10 @@ export const desktopItems: DesktopItem[] = [
   { ...portfolioEntries['work-history'], x: 18, y: 276 },
   { ...portfolioEntries.contact, x: 18, y: 360 },
   { ...portfolioEntries.resume, x: 18, y: 444 },
-  { ...portfolioEntries.trash, x: 118, y: 24 },
-  { ...portfolioEntries.calculator, x: 118, y: 108 },
-  { ...portfolioEntries.fallout, x: 118, y: 192 },
-  { ...portfolioEntries['dark-and-darker'], x: 118, y: 276 },
+  { ...portfolioEntries.calculator, x: 18, y: 528 },
+  { ...portfolioEntries.trash, x: -96, y: 24 },
+  { ...portfolioEntries.fallout, x: -96, y: 108 },
+  { ...portfolioEntries['dark-and-darker'], x: -96, y: 192 },
 ]
 
 export function getFolderEntries(folderId: string) {
