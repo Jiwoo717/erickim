@@ -11,7 +11,7 @@ const projects: Project[] = [
     name: 'NBA Streamlit Dashboard',
     meta: 'Python / Streamlit / Analytics',
     text: 'Interactive NBA analytics dashboard with separate views for team efficiency and hidden-value roster contributors.',
-    demoUrl: 'https://nba-streamlit-dashboard.streamlit.app',
+    demoUrl: 'https://nba-app-dashboard-5jhhfy6uguvh3d8enyjf4u.streamlit.app/',
     codeUrl: 'https://github.com/Jiwoo717/nba-streamlit-dashboard',
   },
   {

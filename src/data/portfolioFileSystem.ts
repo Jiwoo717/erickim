@@ -1,7 +1,7 @@
 import type { DesktopItem, WindowKind } from '../types'
 
 const assetBase = `${import.meta.env.BASE_URL}assets/`
-const nbaDashboardUrl = 'https://nba-streamlit-dashboard.streamlit.app'
+const nbaDashboardUrl = 'https://nba-app-dashboard-5jhhfy6uguvh3d8enyjf4u.streamlit.app/'
 
 export type PortfolioEntry = {
   id: string
