@@ -24,15 +24,9 @@ type ContextMenuState = {
 
 const iconWidth = 88
 const iconHeight = 88
-const desktopGridX = 100
-const desktopGridY = 92
 
 function getDesktopIconLeft(icon: { x: number }, sceneWidth: number) {
   return icon.x < 0 ? Math.max(0, sceneWidth + icon.x - iconWidth) : icon.x
-}
-
-function snapToGrid(value: number, gridSize: number) {
-  return Math.round(value / gridSize) * gridSize
 }
 
 function HeroSection() {
@@ -349,14 +343,8 @@ function HeroSection() {
     function handleMouseMove(moveEvent: MouseEvent) {
       const maxX = Math.max(0, rect.width - iconWidth)
       const maxY = Math.max(0, rect.height - iconHeight)
-      const nextX = Math.min(
-        maxX,
-        Math.max(0, snapToGrid(moveEvent.clientX - rect.left - offset.x, desktopGridX)),
-      )
-      const nextY = Math.min(
-        maxY,
-        Math.max(0, snapToGrid(moveEvent.clientY - rect.top - offset.y, desktopGridY)),
-      )
+      const nextX = Math.min(maxX, Math.max(0, moveEvent.clientX - rect.left - offset.x))
+      const nextY = Math.min(maxY, Math.max(0, moveEvent.clientY - rect.top - offset.y))
 
       setIcons((current) =>
         current.map((item) => (item.id === id ? { ...item, x: nextX, y: nextY } : item)),

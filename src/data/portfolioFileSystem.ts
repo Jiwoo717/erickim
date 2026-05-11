@@ -473,16 +473,16 @@ npm run dev</code></pre>
 }
 
 export const desktopItems: DesktopItem[] = [
-  { ...portfolioEntries.computer, x: 18, y: 24 },
-  { ...portfolioEntries.projects, x: 18, y: 108 },
-  { ...portfolioEntries.info, x: 18, y: 192 },
-  { ...portfolioEntries['work-history'], x: 18, y: 276 },
-  { ...portfolioEntries.contact, x: 18, y: 360 },
-  { ...portfolioEntries.resume, x: 18, y: 444 },
-  { ...portfolioEntries.calculator, x: 18, y: 528 },
-  { ...portfolioEntries.trash, x: -96, y: 24 },
-  { ...portfolioEntries.fallout, x: -96, y: 108 },
-  { ...portfolioEntries['dark-and-darker'], x: -96, y: 192 },
+  { ...portfolioEntries.computer, x: 22, y: 24 },
+  { ...portfolioEntries.projects, x: 22, y: 126 },
+  { ...portfolioEntries.info, x: 22, y: 228 },
+  { ...portfolioEntries['work-history'], x: 22, y: 330 },
+  { ...portfolioEntries.contact, x: 22, y: 432 },
+  { ...portfolioEntries.resume, x: 22, y: 534 },
+  { ...portfolioEntries.calculator, x: 22, y: 636 },
+  { ...portfolioEntries.trash, x: -110, y: 24 },
+  { ...portfolioEntries.fallout, x: -110, y: 126 },
+  { ...portfolioEntries['dark-and-darker'], x: -110, y: 228 },
 ]
 
 export function getFolderEntries(folderId: string) {
