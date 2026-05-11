@@ -22,11 +22,17 @@ type ContextMenuState = {
   itemId?: WindowId
 } | null
 
-const iconWidth = 70
-const iconHeight = 82
+const iconWidth = 88
+const iconHeight = 88
+const desktopGridX = 100
+const desktopGridY = 92
 
 function getDesktopIconLeft(icon: { x: number }, sceneWidth: number) {
   return icon.x < 0 ? Math.max(0, sceneWidth + icon.x - iconWidth) : icon.x
+}
+
+function snapToGrid(value: number, gridSize: number) {
+  return Math.round(value / gridSize) * gridSize
 }
 
 function HeroSection() {
@@ -80,6 +86,16 @@ function HeroSection() {
     const targetEntry = entries[targetId]
     if (!targetEntry) return
 
+    if (targetEntry.kind === 'externalLink') {
+      if (targetEntry.linkUrl) {
+        window.open(targetEntry.linkUrl, '_blank', 'noopener,noreferrer')
+      }
+      setSelectedIcons([id, targetId].filter((value, index, array) => array.indexOf(value) === index))
+      setStartMenuOpen(false)
+      setContextMenu(null)
+      return
+    }
+
     const existingWindow = windows.find((item) => item.id === targetId)
 
     if (!existingWindow) {
@@ -92,20 +108,21 @@ function HeroSection() {
         const isLargeApp =
           targetEntry.kind === 'webapp' || targetEntry.kind === 'externalProject'
         const isLargeResume = targetEntry.kind === 'pdf' && targetEntry.id === 'resume'
+        const isCenteredDocument = targetEntry.kind === 'richText'
         const isLargeWindow = isLargeApp || isLargeResume
         const windowScale = isLargeResume ? 0.75 : 0.8
         const maxWidth = Math.max(320, availableWidth - 36)
         const maxHeight = Math.max(240, availableHeight - 36)
         const width = isLargeWindow
           ? Math.min(maxWidth, Math.max(isLargeResume ? 720 : 640, Math.floor(availableWidth * windowScale)))
-          : targetEntry.defaultWidth
+          : Math.min(maxWidth, targetEntry.defaultWidth)
         const height = isLargeWindow
           ? Math.min(maxHeight, Math.max(isLargeResume ? 560 : 480, Math.floor(availableHeight * windowScale)))
-          : targetEntry.defaultHeight
-        const x = isLargeWindow
+          : Math.min(maxHeight, targetEntry.defaultHeight)
+        const x = isLargeWindow || isCenteredDocument
           ? Math.max(18, Math.floor((availableWidth - width) / 2))
           : 240 + offset
-        const y = isLargeWindow
+        const y = isLargeWindow || isCenteredDocument
           ? Math.max(18, Math.floor((availableHeight - height) / 2))
           : 116 + offset
 
@@ -330,8 +347,16 @@ function HeroSection() {
     }
 
     function handleMouseMove(moveEvent: MouseEvent) {
-      const nextX = Math.max(0, moveEvent.clientX - rect.left - offset.x)
-      const nextY = Math.max(0, moveEvent.clientY - rect.top - offset.y)
+      const maxX = Math.max(0, rect.width - iconWidth)
+      const maxY = Math.max(0, rect.height - iconHeight)
+      const nextX = Math.min(
+        maxX,
+        Math.max(0, snapToGrid(moveEvent.clientX - rect.left - offset.x, desktopGridX)),
+      )
+      const nextY = Math.min(
+        maxY,
+        Math.max(0, snapToGrid(moveEvent.clientY - rect.top - offset.y, desktopGridY)),
+      )
 
       setIcons((current) =>
         current.map((item) => (item.id === id ? { ...item, x: nextX, y: nextY } : item)),

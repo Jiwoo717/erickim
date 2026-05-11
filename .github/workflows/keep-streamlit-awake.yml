@@ -7,9 +7,9 @@ on:
 
 jobs:
   ping-streamlit:
-    name: Ping NBA dashboard
+    name: Open NBA dashboard
     runs-on: ubuntu-latest
-    timeout-minutes: 5
+    timeout-minutes: 12
 
     steps:
       - name: Check Streamlit health
@@ -23,14 +23,56 @@ jobs:
             --retry-delay 10 \
             "https://nba-app-dashboard-5jhhfy6uguvh3d8enyjf4u.streamlit.app/healthz"
 
-      - name: Request Streamlit app shell
+      - name: Install browser automation
         run: |
-          curl \
-            --silent \
-            --show-error \
-            --fail \
-            --max-time 60 \
-            --retry 2 \
-            --retry-delay 10 \
-            "https://nba-app-dashboard-5jhhfy6uguvh3d8enyjf4u.streamlit.app/?embed=true" \
-            > /dev/null
+          npm init -y
+          npm install --no-save playwright
+          npx playwright install --with-deps chromium
+
+      - name: Open Streamlit app in Chromium
+        run: |
+          node <<'NODE'
+          const { chromium } = require('playwright')
+
+          const appUrl = 'https://nba-app-dashboard-5jhhfy6uguvh3d8enyjf4u.streamlit.app/?embed=true'
+          const sleepText = /app has gone to sleep|wake/i
+
+          async function main() {
+            const browser = await chromium.launch({ headless: true })
+            const page = await browser.newPage()
+            page.setDefaultTimeout(90000)
+
+            for (let attempt = 1; attempt <= 3; attempt += 1) {
+              console.log(`Opening Streamlit app, attempt ${attempt}`)
+              await page.goto(appUrl, { waitUntil: 'domcontentloaded', timeout: 90000 })
+              await page.waitForTimeout(7000)
+
+              const wakeButton = page.getByRole('button', {
+                name: /yes.*get.*back|wake|rerun|start/i,
+              })
+
+              if (await wakeButton.count()) {
+                console.log('Wake button found; clicking it.')
+                await wakeButton.first().click().catch(() => undefined)
+              }
+
+              await page.waitForLoadState('networkidle', { timeout: 30000 }).catch(() => undefined)
+              await page.waitForTimeout(60000)
+
+              const bodyText = await page.locator('body').innerText({ timeout: 10000 }).catch(() => '')
+              if (!sleepText.test(bodyText)) {
+                console.log('Streamlit app responded without a sleep screen.')
+                await browser.close()
+                return
+              }
+            }
+
+            await browser.close()
+            throw new Error('Streamlit still appeared asleep after browser wake attempts.')
+          }
+
+          main().catch((error) => {
+            console.error(error)
+            process.exit(1)
+          })
+          NODE

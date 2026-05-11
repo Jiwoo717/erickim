@@ -1,5 +1,6 @@
 import type { MouseEvent as ReactMouseEvent } from 'react'
 import { useState } from 'react'
+import RichTextDocument from './RichTextDocument'
 import WindowsIcon from './WindowsIcon'
 import type { PortfolioEntry } from '../data/portfolioFileSystem'
 import type { WindowId, WindowState } from '../types'
@@ -50,6 +51,14 @@ function WindowContent({
     )
   }
 
+  if (entry.kind === 'image') {
+    return (
+      <div className="image-viewer">
+        {entry.imageUrl ? <img src={entry.imageUrl} alt={entry.name} /> : null}
+      </div>
+    )
+  }
+
   if (entry.kind === 'webapp') {
     return (
       <div className="webapp-viewer">
@@ -67,6 +76,16 @@ function WindowContent({
       <PlaceholderApp
         markdown={entry.markdown ?? ''}
         theme={entry.placeholderTheme ?? 'fallout'}
+      />
+    )
+  }
+
+  if (entry.kind === 'richText') {
+    return (
+      <RichTextDocument
+        id={entry.id}
+        name={entry.name}
+        initialHtml={entry.richTextHtml ?? entry.markdown ?? ''}
       />
     )
   }
@@ -91,27 +110,81 @@ function FileExplorer({
   onOpenEntry,
   onFolderContextMenu,
 }: FileExplorerProps) {
-  const folder = entries[folderId]
-  const folderEntries = Object.values(entries).filter((entry) => entry.folderId === folderId)
+  const [history, setHistory] = useState([folderId])
+  const [historyIndex, setHistoryIndex] = useState(0)
+  const currentFolderId = history[historyIndex] ?? folderId
+  const folder = entries[currentFolderId]
+  const folderEntries = Object.values(entries).filter((entry) => entry.folderId === currentFolderId)
+  const canGoBack = historyIndex > 0
+  const canGoForward = historyIndex < history.length - 1
+  const canGoUp = Boolean(folder?.folderId && entries[folder.folderId])
+
+  function navigateToFolder(nextFolderId: WindowId) {
+    setHistory((current) => [...current.slice(0, historyIndex + 1), nextFolderId])
+    setHistoryIndex((current) => current + 1)
+  }
+
+  function navigateBack() {
+    if (canGoBack) setHistoryIndex((current) => current - 1)
+  }
+
+  function navigateForward() {
+    if (canGoForward) setHistoryIndex((current) => current + 1)
+  }
+
+  function navigateUp() {
+    if (folder?.folderId && entries[folder.folderId]) {
+      navigateToFolder(folder.folderId)
+    }
+  }
+
+  function openExplorerItem(item: PortfolioEntry) {
+    const target = entries[item.openTargetId ?? item.id]
+
+    if (target?.kind === 'folder') {
+      navigateToFolder(target.id)
+      return
+    }
+
+    onOpenEntry(item.id)
+  }
 
   return (
     <div
       className="file-explorer"
-      onContextMenu={(event) => onFolderContextMenu(event, folderId)}
+      onContextMenu={(event) => onFolderContextMenu(event, currentFolderId)}
     >
       <div className="explorer-command-bar">
-        <button type="button" className="explorer-nav-button" aria-label="Back">
+        <button
+          type="button"
+          className="explorer-nav-button"
+          aria-label="Back"
+          disabled={!canGoBack}
+          onClick={navigateBack}
+        >
           <span className="explorer-arrow left" />
         </button>
-        <button type="button" className="explorer-nav-button" aria-label="Forward">
+        <button
+          type="button"
+          className="explorer-nav-button"
+          aria-label="Forward"
+          disabled={!canGoForward}
+          onClick={navigateForward}
+        >
           <span className="explorer-arrow right" />
         </button>
-        <button type="button" className="explorer-nav-button" aria-label="Up">
+        <button
+          type="button"
+          className="explorer-nav-button"
+          aria-label="Up"
+          disabled={!canGoUp}
+          onClick={navigateUp}
+        >
           <span className="explorer-arrow up" />
         </button>
 
         <div className="explorer-address">
-          <WindowsIcon id={folderId} kind="folder" size="small" />
+          <WindowsIcon id={currentFolderId} kind="folder" size="small" />
           <span>{folder?.name ?? 'Folder'}</span>
         </div>
 
@@ -127,8 +200,8 @@ function FileExplorer({
             key={item.id}
             type="button"
             className="explorer-file"
-            onContextMenu={(event) => onFolderContextMenu(event, folderId, item.id)}
-            onDoubleClick={() => onOpenEntry(item.id)}
+            onContextMenu={(event) => onFolderContextMenu(event, currentFolderId, item.id)}
+            onDoubleClick={() => openExplorerItem(item)}
           >
             <WindowsIcon id={item.id} kind={item.kind} />
             <span>{item.name}</span>
@@ -176,7 +249,9 @@ function MarkdownDocument({
 }
 
 function ExternalProjectApp({ entry }: { entry: PortfolioEntry }) {
-  const screenshots = entry.screenshotUrls ?? (entry.screenshotUrl ? [entry.screenshotUrl] : [])
+  const allScreenshots = entry.screenshotUrls ?? (entry.screenshotUrl ? [entry.screenshotUrl] : [])
+  const [failedScreenshots, setFailedScreenshots] = useState<Set<string>>(() => new Set())
+  const screenshots = allScreenshots.filter((screenshot) => !failedScreenshots.has(screenshot))
   const [activeScreenshot, setActiveScreenshot] = useState(0)
   const currentScreenshot = screenshots[activeScreenshot]
   const hasCarousel = screenshots.length > 1
@@ -203,6 +278,10 @@ function ExternalProjectApp({ entry }: { entry: PortfolioEntry }) {
               <img
                 src={currentScreenshot}
                 alt={`${entry.name} screenshot ${activeScreenshot + 1}`}
+                onError={() => {
+                  setFailedScreenshots((current) => new Set(current).add(currentScreenshot))
+                  setActiveScreenshot(0)
+                }}
               />
             </div>
 
