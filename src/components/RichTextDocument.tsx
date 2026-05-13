@@ -20,10 +20,11 @@ type RichTextDocumentProps = {
   id: string
   name: string
   initialHtml: string
+  version?: string
 }
 
-function RichTextDocument({ id, name, initialHtml }: RichTextDocumentProps) {
-  const storageKey = `portfolio-rich-text:${id}`
+function RichTextDocument({ id, name, initialHtml, version = 'v1' }: RichTextDocumentProps) {
+  const storageKey = `portfolio-rich-text:${id}:${version}`
   const savedHtml = window.localStorage.getItem(storageKey)
   const [html, setHtml] = useState(savedHtml ?? initialHtml)
   const [status, setStatus] = useState(savedHtml ? 'Loaded saved draft' : 'Ready')
@@ -70,8 +71,16 @@ function RichTextDocument({ id, name, initialHtml }: RichTextDocumentProps) {
           padding: 16px 18px;
         }
         h1, h2, h3 { color: #f8fafc; line-height: 1.2; }
+        p, li, h1, h2, h3, code, pre, div, section {
+          overflow-wrap: anywhere;
+          word-break: normal;
+          max-width: 100%;
+        }
         a { color: #93c5fd; }
         img { max-width: 100%; height: auto; border-radius: 6px; }
+        pre {
+          white-space: pre-wrap;
+        }
         table { border-color: #334155; }
       `,
     }),

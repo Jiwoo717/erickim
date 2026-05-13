@@ -86,6 +86,7 @@ function WindowContent({
         id={entry.id}
         name={entry.name}
         initialHtml={entry.richTextHtml ?? entry.markdown ?? ''}
+        version={entry.richTextVersion}
       />
     )
   }

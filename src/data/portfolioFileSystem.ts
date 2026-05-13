@@ -13,6 +13,7 @@ export type PortfolioEntry = {
   parentId?: string
   markdown?: string
   richTextHtml?: string
+  richTextVersion?: string
   imageUrl?: string
   placeholderTheme?: 'fallout' | 'dark'
   pdfUrl?: string
@@ -39,22 +40,18 @@ export const portfolioEntries: Record<string, PortfolioEntry> = {
   },
   info: {
     id: 'info',
-    name: 'Info',
-    kind: 'document',
+    name: 'Info.tinymce',
+    kind: 'richText',
     icon: 'info',
     folderId: 'desktop',
-    imageUrl: `${assetBase}profile2.jpg`,
-    markdown: `# Eric J. Kim
-
-I build analytics that are useful in real operating environments: clean SQL, sharper KPI definitions, and dashboards that help people make decisions.
-
-Base: Walnut, CA
-
-Focus: Data, systems, and practical business intelligence
-
-Stack: SQL, Python, BI tools, Excel, and operational reporting`,
-    defaultWidth: 650,
-    defaultHeight: 520,
+    richTextHtml: `<h1>Eric J. Kim</h1>
+<p><img src="${assetBase}profile2.jpg" alt="Eric J. Kim" style="max-width: 180px; border-radius: 10px;" /></p>
+<p>I build analytics that are useful in real operating environments: clean SQL, sharper KPI definitions, and dashboards that help people make decisions.</p>
+<p><strong>Base:</strong> Walnut, CA</p>
+<p><strong>Focus:</strong> Data, systems, and practical business intelligence</p>
+<p><strong>Stack:</strong> SQL, Python, BI tools, Excel, and operational reporting</p>`,
+    defaultWidth: 1230,
+    defaultHeight: 805,
   },
   projects: {
     id: 'projects',
@@ -167,13 +164,13 @@ What I'm playing these days...`,
   },
   'computer-info': {
     id: 'computer-info',
-    name: 'Info',
-    kind: 'document',
+    name: 'Info.tinymce',
+    kind: 'richText',
     icon: 'info',
     openTargetId: 'info',
     folderId: 'computer',
-    defaultWidth: 650,
-    defaultHeight: 520,
+    defaultWidth: 1230,
+    defaultHeight: 805,
   },
   'computer-resume': {
     id: 'computer-resume',
@@ -211,8 +208,9 @@ What I'm playing these days...`,
     kind: 'richText',
     icon: 'richText',
     folderId: 'projects-viz-builder-folder',
+    richTextVersion: 'flow-svg-fixed-v4',
     richTextHtml: `<h1>Viz Builder</h1>
-<p><img src="https://raw.githubusercontent.com/Jiwoo717/data-viz-builder/main/assets/viz-builder-flow.svg" alt="Viz Builder flow diagram" /></p>
+<p><img src="${assetBase}viz-builder-flow-fixed.svg" alt="Viz Builder flow diagram" /></p>
 <h2>Tool Flow</h2>
 <ol>
   <li>Local data defines the sample datasets and field metadata in <code>src/App.tsx</code>.</li>

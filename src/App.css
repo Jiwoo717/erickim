@@ -4,6 +4,7 @@
 }
 
 .desktop-wallpaper,
+.desktop-terminal-ambience,
 .desktop-grid {
   position: fixed;
   inset: 0;
@@ -15,6 +16,136 @@
   background-position: center;
   background-repeat: no-repeat;
   background-size: 100% 100%;
+}
+
+.desktop-terminal-ambience {
+  z-index: 0;
+  overflow: hidden;
+  background:
+    radial-gradient(ellipse at 50% 44%, rgba(21, 146, 75, 0.22), transparent 42%),
+    radial-gradient(ellipse at 50% 108%, rgba(74, 222, 128, 0.16), transparent 38%),
+    linear-gradient(180deg, rgba(0, 20, 10, 0.16), rgba(0, 5, 2, 0.22));
+  mix-blend-mode: screen;
+  opacity: 0.74;
+}
+
+.desktop-terminal-ambience::before {
+  content: "";
+  position: absolute;
+  inset: -2%;
+  background:
+    repeating-linear-gradient(
+      0deg,
+      rgba(151, 255, 142, 0.055) 0,
+      rgba(151, 255, 142, 0.055) 1px,
+      transparent 1px,
+      transparent 5px
+    );
+  opacity: 0.6;
+  animation: terminal-scanline-drift 9s linear infinite;
+}
+
+.desktop-terminal-ambience::after {
+  content: "";
+  position: absolute;
+  inset: -12%;
+  background:
+    radial-gradient(ellipse at center, transparent 52%, rgba(0, 0, 0, 0.28) 74%, rgba(0, 0, 0, 0.55) 100%),
+    linear-gradient(90deg, rgba(0, 0, 0, 0.14), transparent 18%, transparent 82%, rgba(0, 0, 0, 0.18));
+  animation: terminal-breath 6.4s ease-in-out infinite;
+}
+
+.terminal-glitch-band {
+  position: absolute;
+  left: -6%;
+  right: -6%;
+  height: 28px;
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      rgba(97, 255, 103, 0.02) 24%,
+      rgba(158, 255, 148, 0.16) 50%,
+      rgba(97, 255, 103, 0.02) 76%,
+      transparent
+    );
+  opacity: 0;
+  filter: blur(0.5px);
+  transform: skewX(-12deg);
+}
+
+.terminal-glitch-band-one {
+  top: 31%;
+  animation: terminal-glitch-one 11s steps(1) infinite;
+}
+
+.terminal-glitch-band-two {
+  top: 62%;
+  height: 16px;
+  animation: terminal-glitch-two 15s steps(1) infinite;
+}
+
+@keyframes terminal-scanline-drift {
+  from {
+    transform: translateY(0);
+  }
+
+  to {
+    transform: translateY(20px);
+  }
+}
+
+@keyframes terminal-breath {
+  0%,
+  100% {
+    opacity: 0.86;
+    transform: scale(1);
+  }
+
+  50% {
+    opacity: 1;
+    transform: scale(1.015);
+  }
+}
+
+@keyframes terminal-glitch-one {
+  0%,
+  70%,
+  74%,
+  100% {
+    opacity: 0;
+    transform: translateX(0) skewX(-12deg);
+  }
+
+  71% {
+    opacity: 0.55;
+    transform: translateX(-16px) skewX(-12deg);
+  }
+
+  72% {
+    opacity: 0.18;
+    transform: translateX(12px) skewX(-12deg);
+  }
+}
+
+@keyframes terminal-glitch-two {
+  0%,
+  46%,
+  49%,
+  100% {
+    opacity: 0;
+    transform: translateX(0) skewX(-12deg);
+  }
+
+  47% {
+    opacity: 0.38;
+    transform: translateX(18px) skewX(-12deg);
+  }
+
+  48% {
+    opacity: 0.16;
+    transform: translateX(-10px) skewX(-12deg);
+  }
 }
 
 .desktop-grid {
@@ -68,6 +199,133 @@
 .desktop-icon.is-selected {
   background: rgba(55, 153, 235, 0.36);
   border-color: rgba(190, 225, 255, 0.78);
+}
+
+.desktop-guide {
+  position: fixed;
+  right: 474px;
+  bottom: 78px;
+  z-index: 2;
+  display: flex;
+  align-items: flex-end;
+  gap: 12px;
+  pointer-events: auto;
+  user-select: none;
+  transition: transform 0.18s ease, filter 0.18s ease;
+}
+
+.desktop-guide:hover {
+  transform: translateY(-5px) scale(1.035);
+  filter: drop-shadow(0 10px 18px rgba(0, 0, 0, 0.38));
+}
+
+.desktop-guide-stage {
+  position: relative;
+  flex: 0 0 174px;
+  width: 174px;
+  height: 242px;
+  transform-origin: center bottom;
+}
+
+.desktop-guide-character {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center bottom;
+  image-rendering: auto;
+  opacity: 0;
+  filter:
+    drop-shadow(0 0 2px rgba(117, 255, 97, 0.68))
+    drop-shadow(0 0 12px rgba(52, 211, 78, 0.38));
+  transition: opacity 0.45s ease;
+}
+
+.desktop-guide-character.is-active {
+  opacity: 1;
+}
+
+.desktop-guide-idle {
+  cursor: pointer;
+}
+
+.desktop-guide-bubble {
+  position: relative;
+  width: min(282px, 32vw);
+  margin-bottom: 74px;
+  padding: 12px 14px;
+  border: 1px solid rgba(108, 255, 92, 0.76);
+  border-radius: 4px;
+  background:
+    linear-gradient(180deg, rgba(7, 24, 10, 0.96), rgba(2, 10, 4, 0.94)),
+    #031007;
+  color: #adff9d;
+  font-family: "IBM Plex Mono", "Courier New", monospace;
+  font-size: 0.78rem;
+  font-weight: 800;
+  line-height: 1.36;
+  text-shadow:
+    0 0 4px rgba(136, 255, 121, 0.82),
+    0 0 12px rgba(74, 222, 128, 0.42);
+  box-shadow:
+    inset 0 0 0 1px rgba(210, 255, 200, 0.08),
+    inset 0 0 18px rgba(34, 197, 94, 0.1),
+    0 0 14px rgba(34, 197, 94, 0.24),
+    0 14px 28px rgba(0, 0, 0, 0.42);
+  animation: desktop-guide-bubble-in 0.22s ease-out;
+}
+
+.desktop-guide-bubble::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    repeating-linear-gradient(
+      0deg,
+      rgba(156, 255, 139, 0.08) 0,
+      rgba(156, 255, 139, 0.08) 1px,
+      transparent 1px,
+      transparent 4px
+    );
+  pointer-events: none;
+}
+
+.desktop-guide-bubble::after {
+  content: "";
+  position: absolute;
+  right: -9px;
+  bottom: 20px;
+  width: 16px;
+  height: 16px;
+  border-top: 1px solid rgba(108, 255, 92, 0.76);
+  border-right: 1px solid rgba(108, 255, 92, 0.76);
+  background: #031007;
+  transform: rotate(45deg);
+}
+
+@keyframes desktop-guide-bubble-in {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
 }
 
 .desktop-icon-art {
@@ -2355,6 +2613,10 @@
 }
 
 @media (max-width: 900px) {
+  .desktop-guide {
+    display: none;
+  }
+
   .desktop-icons {
     position: static;
     inset: auto;
@@ -2371,6 +2633,17 @@
 
   .window-space {
     min-height: 900px;
+  }
+}
+
+@media (max-width: 1300px) {
+  .desktop-guide {
+    right: 22px;
+    bottom: 258px;
+  }
+
+  .desktop-guide-bubble {
+    width: min(260px, 42vw);
   }
 }
 

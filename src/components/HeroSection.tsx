@@ -2,6 +2,7 @@ import type { MouseEvent as ReactMouseEvent } from 'react'
 import { useEffect, useRef, useState } from 'react'
 import { AnimatePresence } from 'framer-motion'
 import ArcadeWelcomeMarquee from './ArcadeWelcomeMarquee'
+import DesktopGuide from './DesktopGuide'
 import DesktopIcon from './DesktopIcon'
 import MyspaceMusicPlayer from './MyspaceMusicPlayer'
 import StartMenu from './StartMenu'
@@ -12,7 +13,6 @@ import type { PortfolioEntry } from '../data/portfolioFileSystem'
 import type { WindowId, WindowState } from '../types'
 
 const initialWindows: WindowState[] = []
-const wallpaperUrl = `${import.meta.env.BASE_URL}assets/background.png`
 
 type ContextMenuState = {
   x: number
@@ -458,14 +458,11 @@ function HeroSection() {
 
   return (
     <div className="desktop-app">
-        <div
-          className="desktop-wallpaper"
-          aria-hidden="true"
-          style={{
-            backgroundImage:
-              `linear-gradient(rgba(15, 23, 42, 0.18), rgba(15, 23, 42, 0.28)), url("${wallpaperUrl}")`,
-          }}
-        />
+      <div className="desktop-wallpaper" aria-hidden="true" />
+      <div className="desktop-terminal-ambience" aria-hidden="true">
+        <span className="terminal-glitch-band terminal-glitch-band-one" />
+        <span className="terminal-glitch-band terminal-glitch-band-two" />
+      </div>
       <div className="desktop-grid" aria-hidden="true" />
 
       <main
@@ -490,6 +487,8 @@ function HeroSection() {
         </section>
 
         <ArcadeWelcomeMarquee />
+
+        <DesktopGuide />
 
         <MyspaceMusicPlayer />
 

@@ -1,0 +1,136 @@
+<svg width="1280" height="760" viewBox="0 0 1280 760" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">Viz Builder step by step workflow</title>
+  <desc id="desc">A step by step chart explaining where React, TypeScript, local data, Vega-Lite, vega-embed, Vite, CSS, and lucide-react are used in the Viz Builder project.</desc>
+  <defs>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%" color-interpolation-filters="sRGB">
+      <feDropShadow dx="0" dy="10" stdDeviation="13" flood-color="#0f172a" flood-opacity="0.13"/>
+    </filter>
+    <linearGradient id="headerGradient" x1="42" y1="30" x2="1238" y2="30" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#1D4ED8"/>
+      <stop offset="1" stop-color="#0F766E"/>
+    </linearGradient>
+    <marker id="arrow" markerWidth="13" markerHeight="13" refX="11" refY="6.5" orient="auto" markerUnits="strokeWidth">
+      <path d="M2 2L11 6.5L2 11" stroke="#334155" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+    </marker>
+    <style>
+      .bg { fill: #f6f8fc; }
+      .header-title { fill: #ffffff; font: 700 34px Arial, sans-serif; letter-spacing: 0; }
+      .header-subtitle { fill: #dbeafe; font: 500 17px Arial, sans-serif; letter-spacing: 0; }
+      .section-title { fill: #0f172a; font: 700 22px Arial, sans-serif; letter-spacing: 0; }
+      .section-copy { fill: #475569; font: 500 15px Arial, sans-serif; letter-spacing: 0; }
+      .card { fill: #ffffff; stroke: #d9e2ef; stroke-width: 2; filter: url(#shadow); }
+      .card-title { fill: #0f172a; font: 700 20px Arial, sans-serif; letter-spacing: 0; }
+      .card-copy { fill: #475569; font: 500 14px Arial, sans-serif; letter-spacing: 0; }
+      .tool-label { fill: #1e293b; font: 700 13px Arial, sans-serif; letter-spacing: 0; }
+      .pill-text { fill: #ffffff; font: 700 13px Arial, sans-serif; letter-spacing: 0; }
+      .step-text { fill: #ffffff; font: 700 16px Arial, sans-serif; letter-spacing: 0; }
+      .arrow { stroke: #334155; stroke-width: 3.2; stroke-linecap: round; marker-end: url(#arrow); }
+      .support-card { fill: #ffffff; stroke: #cbd5e1; stroke-width: 2; }
+      .support-title { fill: #0f172a; font: 700 17px Arial, sans-serif; letter-spacing: 0; }
+      .support-copy { fill: #475569; font: 500 14px Arial, sans-serif; letter-spacing: 0; }
+    </style>
+  </defs>
+
+  <rect class="bg" width="1280" height="760" rx="28"/>
+  <rect x="40" y="30" width="1200" height="94" rx="22" fill="url(#headerGradient)"/>
+  <text class="header-title" x="72" y="80">Viz Builder Workflow</text>
+  <text class="header-subtitle" x="72" y="107">Where each tool is used in the project</text>
+
+  <text class="section-title" x="56" y="164">Runtime flow</text>
+  <text class="section-copy" x="56" y="188">This is what happens when a user opens the app and builds a chart.</text>
+
+  <g transform="translate(56 218)">
+    <rect class="card" width="248" height="154" rx="18"/>
+    <circle cx="34" cy="34" r="22" fill="#2563eb"/>
+    <text class="step-text" x="29" y="40">1</text>
+    <text class="card-title" x="24" y="78">Local Data</text>
+    <text class="card-copy" x="24" y="105">The app starts with sample</text>
+    <text class="card-copy" x="24" y="125">datasets stored in code.</text>
+    <text class="tool-label" x="24" y="148">Tool: local data</text>
+  </g>
+
+  <line class="arrow" x1="318" y1="295" x2="382" y2="295"/>
+
+  <g transform="translate(396 218)">
+    <rect class="card" width="248" height="154" rx="18"/>
+    <circle cx="34" cy="34" r="22" fill="#0891b2"/>
+    <text class="step-text" x="29" y="40">2</text>
+    <text class="card-title" x="24" y="78">Interface</text>
+    <text class="card-copy" x="24" y="105">The user picks a dataset</text>
+    <text class="card-copy" x="24" y="125">and drags fields.</text>
+    <text class="tool-label" x="24" y="148">Tool: React JS</text>
+  </g>
+
+  <line class="arrow" x1="658" y1="295" x2="722" y2="295"/>
+
+  <g transform="translate(736 218)">
+    <rect class="card" width="248" height="154" rx="18"/>
+    <circle cx="34" cy="34" r="22" fill="#7c3aed"/>
+    <text class="step-text" x="29" y="40">3</text>
+    <text class="card-title" x="24" y="78">Builder State</text>
+    <text class="card-copy" x="24" y="105">Selections, filters, chart</text>
+    <text class="card-copy" x="24" y="125">type, and shelves are saved.</text>
+    <text class="tool-label" x="24" y="148">Tool: React state</text>
+  </g>
+
+  <path class="arrow" d="M860 386V410C860 432 842 450 820 450H738"/>
+
+  <g transform="translate(566 420)">
+    <rect class="card" width="248" height="154" rx="18"/>
+    <circle cx="34" cy="34" r="22" fill="#ea580c"/>
+    <text class="step-text" x="29" y="40">4</text>
+    <text class="card-title" x="24" y="78">Chart Spec</text>
+    <text class="card-copy" x="24" y="105">The app converts state into</text>
+    <text class="card-copy" x="24" y="125">a chart configuration.</text>
+    <text class="tool-label" x="24" y="148">Tool: Vega-Lite</text>
+  </g>
+
+  <line class="arrow" x1="552" y1="497" x2="488" y2="497"/>
+
+  <g transform="translate(226 420)">
+    <rect class="card" width="248" height="154" rx="18"/>
+    <circle cx="34" cy="34" r="22" fill="#be123c"/>
+    <text class="step-text" x="29" y="40">5</text>
+    <text class="card-title" x="24" y="78">Render Chart</text>
+    <text class="card-copy" x="24" y="105">The Vega-Lite spec is mounted</text>
+    <text class="card-copy" x="24" y="125">inside the browser.</text>
+    <text class="tool-label" x="24" y="148">Tool: vega-embed</text>
+  </g>
+
+  <line class="arrow" x1="212" y1="497" x2="148" y2="497"/>
+
+  <g transform="translate(56 420)">
+    <rect class="card" width="126" height="154" rx="18"/>
+    <circle cx="34" cy="34" r="22" fill="#16a34a"/>
+    <text class="step-text" x="29" y="40">6</text>
+    <text class="card-title" x="24" y="78">Live</text>
+    <text class="card-copy" x="24" y="105">Chart updates</text>
+    <text class="card-copy" x="24" y="125">on change.</text>
+  </g>
+
+  <text class="section-title" x="852" y="470">Used alongside the flow</text>
+  <text class="section-copy" x="852" y="494">These tools support the app.</text>
+  <text class="section-copy" x="852" y="514">They are not separate data-flow steps.</text>
+
+  <g transform="translate(852 536)">
+    <rect class="support-card" width="340" height="134" rx="18"/>
+    <text class="support-title" x="20" y="34">Vite</text>
+    <text class="support-copy" x="20" y="58">Runs the local dev server and</text>
+    <text class="support-copy" x="20" y="78">creates the production build.</text>
+    <text class="support-title" x="20" y="106">CSS + lucide-react</text>
+    <text class="support-copy" x="20" y="126">Style the layout and icons.</text>
+  </g>
+
+  <g transform="translate(56 654)">
+    <rect x="0" y="0" width="146" height="34" rx="17" fill="#1d4ed8"/>
+    <text class="pill-text" x="22" y="23">React JS</text>
+    <rect x="162" y="0" width="146" height="34" rx="17" fill="#0f766e"/>
+    <text class="pill-text" x="182" y="23">TypeScript</text>
+    <rect x="324" y="0" width="146" height="34" rx="17" fill="#ea580c"/>
+    <text class="pill-text" x="350" y="23">Vega-Lite</text>
+    <rect x="486" y="0" width="146" height="34" rx="17" fill="#be123c"/>
+    <text class="pill-text" x="516" y="23">vega-embed</text>
+    <rect x="648" y="0" width="146" height="34" rx="17" fill="#334155"/>
+    <text class="pill-text" x="690" y="23">Vite</text>
+  </g>
+</svg>
