@@ -22,8 +22,6 @@ const iconClassById: Partial<Record<WindowId, string>> = {
   'projects-viz-builder-github': 'windows-icon-link',
   'projects-bi-github': 'windows-icon-link',
   'projects-viz-builder': 'windows-icon-calculator',
-  fallout: 'windows-icon-fallout',
-  'dark-and-darker': 'windows-icon-dark',
 }
 
 const iconClassByKind: Record<WindowKind, string> = {
@@ -34,7 +32,6 @@ const iconClassByKind: Record<WindowKind, string> = {
   image: 'windows-icon-image-file',
   pdf: 'windows-icon-pdf',
   calculator: 'windows-icon-calculator',
-  placeholder: 'windows-icon-folder',
   webapp: 'windows-icon-calculator',
   externalProject: 'windows-icon-calculator',
   externalLink: 'windows-icon-link',
@@ -48,8 +45,6 @@ const imageIconById: Partial<Record<WindowId, string>> = {
   calculator: `${assetBase}calculator.png`,
   'projects-viz-builder': `${assetBase}viz-builder.png`,
   'projects-nba-dashboard': `${assetBase}streamlit.png`,
-  fallout: `${assetBase}fallout-icon.png`,
-  'dark-and-darker': `${assetBase}blacksmith-icon.png`,
 }
 
 const imageIconByKind: Partial<Record<WindowKind, string>> = {

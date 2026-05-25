@@ -2,6 +2,7 @@ import type { DesktopItem, WindowKind } from '../types'
 
 const assetBase = `${import.meta.env.BASE_URL}assets/`
 const nbaDashboardUrl = 'https://nba-app-dashboard-5jhhfy6uguvh3d8enyjf4u.streamlit.app/'
+const resumePdfUrl = `${assetBase}Eric-Kim-Resume.pdf?v=20260525`
 
 export type PortfolioEntry = {
   id: string
@@ -15,7 +16,6 @@ export type PortfolioEntry = {
   richTextHtml?: string
   richTextVersion?: string
   imageUrl?: string
-  placeholderTheme?: 'fallout' | 'dark'
   pdfUrl?: string
   appUrl?: string
   linkUrl?: string
@@ -86,7 +86,7 @@ export const portfolioEntries: Record<string, PortfolioEntry> = {
     kind: 'pdf',
     icon: 'pdf',
     folderId: 'desktop',
-    pdfUrl: `${assetBase}Eric-Kim-Resume.pdf`,
+    pdfUrl: resumePdfUrl,
     defaultWidth: 980,
     defaultHeight: 720,
   },
@@ -107,30 +107,6 @@ export const portfolioEntries: Record<string, PortfolioEntry> = {
     folderId: 'desktop',
     defaultWidth: 330,
     defaultHeight: 430,
-  },
-  fallout: {
-    id: 'fallout',
-    name: 'Fallout 3',
-    kind: 'placeholder',
-    icon: 'fallout',
-    folderId: 'desktop',
-    placeholderTheme: 'fallout',
-    markdown: `# Fallout 3
-Just one of my all-time favorite game`,
-    defaultWidth: 560,
-    defaultHeight: 390,
-  },
-  'dark-and-darker': {
-    id: 'dark-and-darker',
-    name: 'Dark And Darker',
-    kind: 'placeholder',
-    icon: 'dark',
-    folderId: 'desktop',
-    placeholderTheme: 'dark',
-    markdown: `# Dark and Darker
-What I'm playing these days...`,
-    defaultWidth: 560,
-    defaultHeight: 390,
   },
   'computer-projects': {
     id: 'computer-projects',
@@ -179,7 +155,7 @@ What I'm playing these days...`,
     icon: 'pdf',
     openTargetId: 'resume',
     folderId: 'computer',
-    pdfUrl: `${assetBase}Eric-Kim-Resume.pdf`,
+    pdfUrl: resumePdfUrl,
     defaultWidth: 980,
     defaultHeight: 720,
   },
@@ -479,8 +455,6 @@ export const desktopItems: DesktopItem[] = [
   { ...portfolioEntries.resume, x: 22, y: 534 },
   { ...portfolioEntries.calculator, x: 22, y: 636 },
   { ...portfolioEntries.trash, x: -110, y: 24 },
-  { ...portfolioEntries.fallout, x: -110, y: 126 },
-  { ...portfolioEntries['dark-and-darker'], x: -110, y: 228 },
 ]
 
 export function getFolderEntries(folderId: string) {

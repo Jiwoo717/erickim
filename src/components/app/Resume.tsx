@@ -1,5 +1,5 @@
 function Resume() {
-  const resumeUrl = `${import.meta.env.BASE_URL}assets/Eric-Kim-Resume.pdf`
+  const resumeUrl = `${import.meta.env.BASE_URL}assets/Eric-Kim-Resume.pdf?v=20260525`
 
   return (
     <div className="stacked-panels">

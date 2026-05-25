@@ -8,7 +8,6 @@ export type WindowKind =
   | 'image'
   | 'pdf'
   | 'calculator'
-  | 'placeholder'
   | 'webapp'
   | 'externalProject'
   | 'externalLink'

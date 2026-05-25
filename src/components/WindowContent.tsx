@@ -71,15 +71,6 @@ function WindowContent({
     return <ExternalProjectApp entry={entry} />
   }
 
-  if (entry.kind === 'placeholder') {
-    return (
-      <PlaceholderApp
-        markdown={entry.markdown ?? ''}
-        theme={entry.placeholderTheme ?? 'fallout'}
-      />
-    )
-  }
-
   if (entry.kind === 'richText') {
     return (
       <RichTextDocument
@@ -423,28 +414,6 @@ function CalculatorApp() {
         ))}
       </div>
     </div>
-  )
-}
-
-function PlaceholderApp({
-  markdown,
-  theme,
-}: {
-  markdown: string
-  theme: 'fallout' | 'dark'
-}) {
-  const lines = markdown.split('\n').filter(Boolean)
-  const title = lines[0]?.replace('# ', '') ?? 'Placeholder'
-  const body = lines.slice(1)
-
-  return (
-    <article className={`placeholder-app placeholder-${theme}`}>
-      <div className="placeholder-emblem" aria-hidden="true" />
-      <h1>{title}</h1>
-      {body.map((line) => (
-        <p key={line}>{line}</p>
-      ))}
-    </article>
   )
 }
 
